@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Verificación de sello · El Cuarto Impacto</title>
+<meta name="description" content="Verificá la autenticidad de un sello de Certificación A · Empresa Aumentada.">
+<style>
+:root {
+  --navy:#0f2137; --navy-mid:#1e3a5f; --gold:#c8920a; --goldb:#f4b822;
+  --paper:#faf8f3; --paper-warm:#f4eedf; --ink:#141210; --muted:#76706a;
+  --a1:#89366C; --a2:#C8920A; --a3:#1E3A5F; --a4:#2D7DD2; --a5:#0A9E6E;
+  --border:#ece5d5; --success:#047857; --error:#b91c1c;
+}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  font-family:'DM Sans',system-ui,sans-serif; background:var(--paper); color:var(--ink);
+  min-height:100vh; line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+.wrap { max-width:600px; margin:0 auto; padding:3rem 1.5rem; }
+.header { text-align:center; margin-bottom:3rem; }
+.header small {
+  color:var(--gold); font-size:0.7rem; letter-spacing:0.22em;
+  text-transform:uppercase; font-weight:600; display:block; margin-bottom:0.5rem;
+}
+.header h1 {
+  font-family:'Cormorant Garamond',Georgia,serif; color:var(--navy);
+  font-size:2.5rem; font-weight:600; letter-spacing:-0.02em;
+}
+.card {
+  background:white; border:1px solid var(--border); border-radius:8px;
+  padding:3rem 2.5rem; box-shadow:0 8px 24px rgba(15,33,55,0.08); text-align:center;
+}
+.sello-circle {
+  width:140px; height:140px; border-radius:50%; margin:0 auto 1.5rem;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Cormorant Garamond',Georgia,serif; font-size:64px; font-weight:600;
+  color:white; box-shadow:0 8px 24px rgba(15,33,55,0.12);
+}
+.sello-name { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.75rem; font-weight:600; margin-bottom:0.25rem; }
+.sello-empresa {
+  font-size:1.25rem; color:var(--navy); margin:1.5rem 0 0.5rem;
+  font-family:'Cormorant Garamond',Georgia,serif; font-weight:600;
+}
+.sello-pais { font-size:0.95rem; color:var(--muted); }
+.dl {
+  display:grid; grid-template-columns:1fr 1fr; gap:1rem;
+  margin:2rem 0 0; padding-top:2rem; border-top:1px solid var(--border);
+  text-align:left;
+}
+.dl dt { font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); font-weight:600; margin-bottom:0.25rem; }
+.dl dd { font-size:0.95rem; color:var(--ink); margin-bottom:0.5rem; }
+.status {
+  display:inline-flex; align-items:center; gap:0.5rem;
+  padding:0.4rem 1rem; border-radius:20px; font-size:0.85rem; font-weight:600;
+  margin-top:1rem;
+}
+.status-valid { background:#ecfdf5; color:var(--success); }
+.status-expired { background:#fef2f2; color:var(--error); }
+.empty {
+  padding:4rem 2rem; text-align:center; color:var(--muted); font-style:italic;
+}
+.foot {
+  text-align:center; margin-top:2.5rem; font-size:0.85rem; color:var(--muted);
+}
+.foot a { color:var(--navy-mid); text-decoration:none; }
+.foot a:hover { color:var(--gold); }
+.code-input { display:flex; gap:0.5rem; margin-top:1.5rem; }
+.code-input input {
+  flex:1; padding:0.8rem 1rem; border:1.5px solid var(--border); border-radius:4px;
+  font-family:ui-monospace,Menlo,monospace; font-size:0.95rem;
+}
+.code-input button {
+  background:var(--navy); color:var(--paper); border:none;
+  padding:0 1.5rem; border-radius:4px; font-weight:600; cursor:pointer;
+  font-family:'DM Sans',system-ui,sans-serif;
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="header">
+    <small>El Cuarto Impacto</small>
+    <h1>Verificación de sello</h1>
+  </div>
+
+  <div id="result" class="card">
+    <div class="empty">Cargando…</div>
+  </div>
+
+  <div class="foot">
+    ¿Necesitás ayuda? Escribinos a <a href="mailto:info@elcuartoimpacto.com">info@elcuartoimpacto.com</a>
+    <br><br>
+    <a href="/">← Volver a elcuartoimpacto.com</a>
+  </div>
+</div>
+
+<script>
+var LEVEL_COLORS = { A1:'#89366C', A2:'#C8920A', A3:'#1E3A5F', A4:'#2D7DD2', A5:'#0A9E6E' };
+var LEVEL_NAMES = { A1:'Consciente', A2:'Adoptante', A3:'Responsable', A4:'Transformadora', A5:'Referente' };
+
+var BACKEND_URL = (function(){
+  var host = window.location.hostname;
+  if (host === 'localhost' || host === '127.0.0.1') return 'http://localhost:3100';
+  return '';
+})();
+
+function getCodigo() {
+  var p = new URLSearchParams(window.location.search);
+  var c = p.get('codigo');
+  if (c) return c;
+  // O desde el path: /verificar/CODIGO
+  var path = window.location.pathname.match(/verificar\/([a-z0-9]+)/i);
+  return path ? path[1] : null;
+}
+
+function fmtDate(d) {
+  if (!d) return '—';
+  return new Date(d).toLocaleDateString('es-AR', { day:'numeric', month:'long', year:'numeric' });
+}
+
+function buscar(codigo) {
+  fetch(BACKEND_URL + '/api/sellos/verificar/' + encodeURIComponent(codigo))
+    .then(function(r){ return r.json().then(function(b){return {ok:r.ok,body:b}}); })
+    .then(function(out){
+      if (!out.ok) return mostrarVacio(out.body.error || 'Sello no encontrado');
+      mostrarSello(out.body.data);
+    })
+    .catch(function(err){
+      mostrarVacio('No pudimos verificar el sello: ' + err.message);
+    });
+}
+
+function mostrarSello(d) {
+  var color = LEVEL_COLORS[d.nivel] || '#0f2137';
+  var name = LEVEL_NAMES[d.nivel] || '';
+  document.getElementById('result').innerHTML =
+    '<div class="sello-circle" style="background:'+color+'">'+d.nivel+'</div>' +
+    '<div class="sello-name" style="color:'+color+'">'+name+'</div>' +
+    (d.valido
+      ? '<div class="status status-valid">✓ Sello válido y vigente</div>'
+      : '<div class="status status-expired">⚠ Sello vencido o inactivo</div>') +
+    '<div class="sello-empresa">'+ (d.empresa || '—') +'</div>' +
+    (d.pais ? '<div class="sello-pais">'+ d.pais +'</div>' : '') +
+    '<dl class="dl">' +
+      '<div><dt>Nivel</dt><dd>'+d.nivel+' · '+name+'</dd></div>' +
+      '<div><dt>Estado</dt><dd>'+(d.valido?'Activo':'Vencido')+'</dd></div>' +
+      '<div><dt>Emitido</dt><dd>'+fmtDate(d.fecha_emision)+'</dd></div>' +
+      '<div><dt>Vence</dt><dd>'+fmtDate(d.fecha_vencimiento)+'</dd></div>' +
+    '</dl>';
+}
+
+function mostrarVacio(msg) {
+  document.getElementById('result').innerHTML =
+    '<div class="empty">' +
+      '<p style="margin-bottom:1.5rem">' + (msg || 'Ingresá un código de verificación') + '</p>' +
+      '<div class="code-input">' +
+        '<input id="codigo-input" placeholder="Ej: a1b2c3d4e5f6">' +
+        '<button onclick="manualBuscar()">Verificar</button>' +
+      '</div>' +
+    '</div>';
+}
+
+window.manualBuscar = function() {
+  var c = document.getElementById('codigo-input').value.trim();
+  if (c) buscar(c);
+};
+
+var codigo = getCodigo();
+if (codigo) buscar(codigo);
+else mostrarVacio();
+</script>
+
+</body>
+</html>

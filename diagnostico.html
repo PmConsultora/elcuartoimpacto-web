@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Diagnóstico de Madurez en IA — Certificación A · Empresa Aumentada. El Cuarto Impacto.">
+<meta property="og:title" content="Certificación A · Empresa Aumentada — El Cuarto Impacto">
+<meta property="og:description" content="Medí el nivel de madurez de tu organización en inteligencia artificial responsable.">
+<title>Certificación A · Diagnóstico — El Cuarto Impacto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0f2137;
+  --navy-deep:#0a1829;
+  --navy-mid:#1e3a5f;
+  --navy-soft:#2d5a8e;
+  --celeste:#c8ddee;
+  --celeste-light:#eef4fa;
+  --gold:#f4b822;
+  --gold-dark:#c8920a;
+  --gold-light:#f7ca5c;
+  --ink:#141210;
+  --ink-mid:#3a3733;
+  --ink-light:#6e6b66;
+  --ink-faint:#a8a49e;
+  --paper:#f8f6f2;
+  --white:#ffffff;
+  --rule:rgba(20,18,16,.09);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  /* Level colors */
+  --a1:#89366C;
+  --a2:#c8920a;
+  --a3:#1e3a5f;
+  --a4:#2D7DD2;
+  --a5:#0A9E6E;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--white);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ── NAV (identical to main site) ── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 3rem;height:68px;
+  background:rgba(255,255,255,.97);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--rule);transition:box-shadow .3s;
+}
+.nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,.06)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo svg{flex-shrink:0}
+.nav-logo-wordmark{display:flex;flex-direction:column;gap:2px}
+.nav-logo-title{font-family:var(--serif);font-size:.95rem;font-weight:300;color:var(--ink);letter-spacing:.01em}
+.nav-logo-title em{font-style:italic;color:var(--navy-mid)}
+.nav-logo-sub{font-size:.55rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+.nav-right{display:flex;align-items:center;gap:1.5rem}
+.nav-back{
+  font-size:.65rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-light);text-decoration:none;transition:color .2s;
+  display:flex;align-items:center;gap:.4rem;
+}
+.nav-back:hover{color:var(--navy)}
+.lang-btn{
+  background:none;border:1px solid rgba(244,184,34,.4);color:var(--gold);
+  font-family:var(--sans);font-size:.58rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;padding:.3rem .8rem;cursor:pointer;transition:background .2s,color .2s;
+}
+.lang-btn:hover{background:var(--gold);color:var(--navy-deep)}
+
+/* ── HERO DIAGNÓSTICO ── */
+.diag-hero{
+  background:var(--navy);padding:9rem 3rem 6rem;
+  position:relative;overflow:hidden;
+}
+.diag-hero-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    repeating-linear-gradient(0deg,rgba(200,221,238,.04) 0,rgba(200,221,238,.04) 1px,transparent 1px,transparent 64px),
+    repeating-linear-gradient(90deg,rgba(200,221,238,.04) 0,rgba(200,221,238,.04) 1px,transparent 1px,transparent 64px);
+}
+.diag-hero-accent{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.diag-hero-inner{max-width:800px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.diag-hero-tag{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:rgba(244,184,34,.1);border:1px solid rgba(244,184,34,.25);
+  padding:.4rem 1.2rem;margin-bottom:2rem;
+  font-size:.58rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+}
+.diag-hero-title{
+  font-family:var(--serif);font-size:clamp(3rem,7vw,5.5rem);
+  font-weight:300;line-height:.95;letter-spacing:-.02em;
+  color:var(--white);margin-bottom:.5rem;
+}
+.diag-hero-title em{font-style:italic;color:var(--celeste);display:block}
+.diag-hero-sub{
+  font-family:var(--serif);font-size:clamp(.95rem,2vw,1.15rem);
+  font-style:italic;font-weight:300;line-height:1.75;
+  color:rgba(200,221,238,.65);margin:1.5rem auto 2.5rem;max-width:520px;
+}
+.diag-hero-meta{
+  display:flex;justify-content:center;gap:0;
+  border:1px solid rgba(200,221,238,.12);width:fit-content;margin:0 auto 3rem;
+}
+.diag-hero-meta-item{
+  font-size:.58rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(200,221,238,.4);padding:.5rem 1.2rem;
+  border-right:1px solid rgba(200,221,238,.1);
+}
+.diag-hero-meta-item:last-child{border-right:none}
+.level-pills-row{display:flex;justify-content:center;gap:.5rem;margin-bottom:3rem;flex-wrap:wrap}
+.level-pill{
+  font-size:.62rem;font-weight:700;letter-spacing:.1em;font-family:monospace;
+  padding:.3rem .85rem;color:var(--white);
+}
+.btn-start{
+  display:inline-flex;align-items:center;gap:.7rem;
+  font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--navy-deep);background:var(--gold);
+  padding:1.1rem 2.5rem;border:none;cursor:pointer;font-family:var(--sans);
+  transition:background .2s,transform .2s;
+}
+.btn-start:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+/* ── PROGRESS BAR ── */
+.progress-bar-wrap{
+  position:fixed;top:68px;left:0;right:0;z-index:200;
+  height:3px;background:rgba(200,221,238,.12);
+}
+.progress-bar-fill{
+  height:100%;background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+  transition:width .4s ease;
+}
+
+/* ── FORM SECTION ── */
+.diag-form-section{
+  background:var(--paper);min-height:calc(100vh - 68px);
+  padding:5rem 3rem 6rem;display:none;
+}
+.diag-form-section.active{display:block}
+.form-inner{max-width:740px;margin:0 auto}
+
+/* Dimension header */
+.dim-header{
+  display:flex;align-items:center;gap:1rem;
+  margin-bottom:.75rem;
+}
+.dim-icon{font-size:1.2rem}
+.dim-label{
+  font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-dark);
+}
+.dim-label.agentic-tag{
+  margin-left:.5rem;padding:.15rem .55rem;
+  background:rgba(244,184,34,.12);border:1px solid rgba(244,184,34,.3);
+  color:var(--gold-dark);font-size:.52rem;
+}
+
+/* Question counter */
+.q-counter{
+  font-size:.6rem;font-weight:400;letter-spacing:.14em;
+  color:var(--ink-faint);margin-bottom:1.25rem;font-family:monospace;
+}
+
+/* Question text */
+.q-text{
+  font-family:var(--serif);font-size:clamp(1.1rem,2.2vw,1.5rem);
+  font-weight:300;font-style:italic;line-height:1.6;
+  color:var(--ink);margin-bottom:2.5rem;max-width:640px;
+}
+
+/* Options */
+.opts{display:flex;flex-direction:column;gap:.6rem;margin-bottom:3rem}
+.opt{
+  display:flex;align-items:center;gap:1rem;
+  background:var(--white);border:1px solid var(--rule);
+  padding:1rem 1.4rem;cursor:pointer;
+  transition:border-color .18s,background .18s;
+  font-family:var(--sans);color:var(--ink-mid);
+}
+.opt:hover{border-color:rgba(244,184,34,.4);background:rgba(244,184,34,.03)}
+.opt.sel{border-color:var(--gold);background:rgba(244,184,34,.06)}
+.opt-radio{
+  width:16px;height:16px;border-radius:50%;
+  border:1.5px solid var(--rule);flex-shrink:0;
+  transition:border-color .18s,background .18s;
+}
+.opt.sel .opt-radio{background:var(--gold);border-color:var(--gold)}
+.opt-label{flex:1;font-size:.88rem;font-weight:300;line-height:1.4}
+.opt-dots{
+  font-size:.7rem;color:var(--gold);letter-spacing:1px;
+  font-family:monospace;flex-shrink:0;
+}
+
+/* Nav buttons */
+.form-nav{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:2.5rem;
+}
+.btn-nav-prev{
+  font-size:.68rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-light);background:none;
+  border:1px solid var(--rule);padding:.75rem 1.5rem;
+  cursor:pointer;font-family:var(--sans);transition:border-color .2s,color .2s;
+}
+.btn-nav-prev:hover{border-color:var(--ink-faint);color:var(--ink)}
+.btn-nav-prev:disabled{opacity:.3;cursor:default}
+.btn-nav-next{
+  font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--white);background:var(--navy);
+  border:none;padding:.85rem 2rem;
+  cursor:pointer;font-family:var(--sans);transition:background .2s;
+  display:flex;align-items:center;gap:.5rem;
+}
+.btn-nav-next:hover{background:var(--navy-mid)}
+.btn-finish{
+  font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--navy-deep);background:var(--gold);
+  border:none;padding:.95rem 2.2rem;
+  cursor:pointer;font-family:var(--sans);transition:background .2s,transform .2s;
+  display:flex;align-items:center;gap:.5rem;
+}
+.btn-finish:hover{background:var(--gold-light);transform:translateY(-1px)}
+.btn-finish:disabled{opacity:.35;cursor:default;transform:none}
+
+/* Dots progress */
+.dots-row{
+  display:flex;gap:4px;flex-wrap:wrap;justify-content:center;
+  padding-top:1rem;border-top:1px solid var(--rule);margin-top:1rem;
+}
+.dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--rule);cursor:pointer;transition:all .2s;flex-shrink:0;
+}
+.dot.answered{background:var(--navy-soft)}
+.dot.current{background:var(--gold);transform:scale(1.5)}
+
+/* ── RESULTS ── */
+.results-section{background:var(--white);min-height:100vh;padding:6rem 3rem;display:none}
+.results-section.active{display:block}
+.results-inner{max-width:820px;margin:0 auto}
+
+/* Level badge */
+.level-badge{
+  border:2px solid;padding:4rem 3rem;text-align:center;
+  margin-bottom:3rem;background:var(--paper);position:relative;overflow:hidden;
+}
+.level-badge::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.badge-tag{
+  font-size:.58rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  margin-bottom:1rem;
+}
+.badge-letter{
+  font-family:monospace;font-size:7rem;font-weight:700;line-height:1;
+  letter-spacing:-.04em;margin-bottom:.25rem;
+}
+.badge-name{
+  font-family:var(--serif);font-size:2rem;font-weight:300;font-style:italic;
+  margin-bottom:1.25rem;
+}
+.badge-desc{
+  font-family:var(--serif);font-size:1.05rem;font-weight:300;line-height:1.75;
+  color:var(--ink-mid);max-width:520px;margin:0 auto;
+}
+
+/* Score bar */
+.score-wrap{
+  background:var(--paper);border:1px solid var(--rule);
+  padding:2rem 2.5rem;margin-bottom:3rem;
+}
+.score-label{
+  font-size:.82rem;font-weight:300;color:var(--ink-mid);margin-bottom:1.25rem;
+}
+.score-label strong{color:var(--ink);font-weight:500}
+.score-bar-bg{
+  height:8px;background:rgba(20,18,16,.07);
+  position:relative;margin-bottom:.75rem;overflow:visible;
+}
+.score-bar-fill{height:100%;transition:width 1s ease}
+.score-mark{
+  position:absolute;top:-5px;width:2px;height:18px;
+  transform:translateX(-50%);opacity:.4;
+}
+.score-bar-labels{
+  display:flex;justify-content:space-between;
+  font-size:.6rem;font-weight:600;letter-spacing:.08em;font-family:monospace;
+}
+
+/* Dimensions grid */
+.dim-results-section{margin-bottom:3rem}
+.section-label{
+  font-size:.6rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold-dark);margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:.75rem;
+}
+.section-label::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.dim-results-grid{display:flex;flex-direction:column;gap:.75rem}
+.dim-result-row{
+  display:flex;align-items:center;gap:1rem;
+  background:var(--paper);border:1px solid var(--rule);
+  padding:1rem 1.5rem;
+}
+.dim-result-icon{font-size:1.1rem;flex-shrink:0}
+.dim-result-name{font-size:.82rem;font-weight:300;flex:1;color:var(--ink-mid)}
+.dim-result-bar-bg{
+  width:120px;height:5px;background:rgba(20,18,16,.07);flex-shrink:0;overflow:hidden;
+}
+.dim-result-bar-fill{height:100%;transition:width 1s ease}
+.dim-result-pct{
+  font-size:.68rem;font-family:monospace;color:var(--ink-faint);
+  width:36px;text-align:right;flex-shrink:0;
+}
+
+/* Recommendations */
+.recs-section{margin-bottom:3rem}
+.rec-card{
+  display:flex;gap:1rem;
+  border:1px solid var(--rule);padding:1.5rem;margin-bottom:.75rem;
+}
+.rec-num{
+  width:26px;height:26px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;font-weight:700;color:var(--white);
+}
+.rec-body{flex:1}
+.rec-q{
+  font-family:var(--serif);font-size:.9rem;font-weight:300;font-style:italic;
+  color:var(--ink-mid);margin-bottom:.4rem;line-height:1.5;
+}
+.rec-action{
+  font-size:.82rem;font-weight:300;color:var(--ink-light);line-height:1.5;
+}
+.rec-action strong{color:var(--gold-dark);font-weight:500}
+
+/* CTA results */
+.results-cta{
+  border:1px solid var(--rule);border-top:3px solid var(--gold);
+  padding:2.5rem 3rem;text-align:center;margin-bottom:2rem;
+}
+.results-cta h3{
+  font-family:var(--serif);font-size:1.6rem;font-weight:300;font-style:italic;
+  color:var(--ink);margin-bottom:.5rem;
+}
+.results-cta p{font-size:.85rem;font-weight:300;color:var(--ink-light);margin-bottom:1.75rem}
+.btn-cta{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--navy-deep);background:var(--gold);
+  padding:1rem 2rem;text-decoration:none;
+  border:none;cursor:pointer;font-family:var(--sans);
+  transition:background .2s;
+}
+.btn-cta:hover{background:var(--gold-light)}
+.results-mail{font-size:.72rem;color:var(--ink-faint);margin-top:1rem;letter-spacing:.06em}
+.btn-restart{
+  display:block;text-align:center;width:fit-content;margin:0 auto;
+  font-size:.66rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-faint);background:none;border:1px solid var(--rule);
+  padding:.7rem 1.5rem;cursor:pointer;font-family:var(--sans);transition:border-color .2s,color .2s;
+}
+.btn-restart:hover{border-color:var(--ink-light);color:var(--ink-light)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  .nav{padding:0 1.25rem}
+  .diag-hero,
+  .diag-form-section,
+  .results-section{padding-left:1.25rem;padding-right:1.25rem}
+  .results-cta{padding:1.75rem 1.5rem}
+  .level-badge{padding:2.5rem 1.5rem}
+  .badge-letter{font-size:5rem}
+  .dim-result-bar-bg{width:70px}
+}
+
+/* ── FADE ANIM ── */
+.fade{opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s}
+.fade.in{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <a href="/" class="nav-logo">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="28" height="28" rx="4" fill="#0f2137"/>
+      <rect x="5" y="5" width="8" height="8" rx="1.5" fill="#c8ddee" opacity=".6"/>
+      <rect x="15" y="5" width="8" height="8" rx="1.5" fill="#c8ddee" opacity=".3"/>
+      <rect x="5" y="15" width="8" height="8" rx="1.5" fill="#c8ddee" opacity=".3"/>
+      <rect x="15" y="15" width="8" height="8" rx="2.5" fill="#f4b822"/>
+    </svg>
+    <div class="nav-logo-wordmark">
+      <span class="nav-logo-title">El <em>Cuarto</em> Impacto</span>
+      <span class="nav-logo-sub">Paula Monte</span>
+    </div>
+  </a>
+  <div class="nav-right">
+    <a href="/" class="nav-back" id="nav-back">← <span id="nav-back-label">Volver al sitio</span></a>
+    <button class="lang-btn" onclick="toggleLang()" id="lang-btn">EN</button>
+  </div>
+</nav>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar-wrap" id="progressBarWrap" style="display:none">
+  <div class="progress-bar-fill" id="progressBarFill" style="width:0%"></div>
+</div>
+
+<!-- HERO -->
+<section class="diag-hero" id="heroSection">
+  <div class="diag-hero-bg"></div>
+  <div class="diag-hero-accent"></div>
+  <div class="diag-hero-inner">
+    <div class="diag-hero-tag" id="hero-tag">El Cuarto Impacto</div>
+    <h1 class="diag-hero-title">
+      Certificación A
+      <em id="hero-title-em">Empresa Aumentada</em>
+    </h1>
+    <p class="diag-hero-sub" id="hero-sub">Diagnóstico de madurez en inteligencia artificial responsable para organizaciones</p>
+    <div class="diag-hero-meta">
+      <div class="diag-hero-meta-item" id="meta-q">30 preguntas</div>
+      <div class="diag-hero-meta-item">5 dimensiones</div>
+      <div class="diag-hero-meta-item" id="meta-t">~8 min</div>
+    </div>
+    <div class="level-pills-row">
+      <div class="level-pill" style="background:var(--a1)">A1</div>
+      <div class="level-pill" style="background:var(--a2)">A2</div>
+      <div class="level-pill" style="background:var(--a3)">A3</div>
+      <div class="level-pill" style="background:var(--a4)">A4</div>
+      <div class="level-pill" style="background:var(--a5)">A5</div>
+    </div>
+    <button class="btn-start" onclick="startDiagnostic()" id="btn-start">
+      <span id="btn-start-label">Iniciar diagnóstico</span> →
+    </button>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="diag-form-section" id="formSection">
+  <div class="form-inner">
+    <div class="dim-header">
+      <span class="dim-icon" id="dimIcon"></span>
+      <span class="dim-label" id="dimLabel"></span>
+      <span class="dim-label agentic-tag" id="agenticTag" style="display:none" data-es="Agéntica" data-en="Agentic">Agéntica</span>
+    </div>
+    <div class="q-counter" id="qCounter"></div>
+    <div class="q-text fade" id="qText"></div>
+    <div class="opts fade" id="optsContainer"></div>
+    <div class="form-nav">
+      <button class="btn-nav-prev" id="btnPrev" onclick="navigate(-1)">← <span id="prev-label">Anterior</span></button>
+      <button class="btn-nav-next" id="btnNext" onclick="navigate(1)">
+        <span id="next-label">Siguiente</span> →
+      </button>
+      <button class="btn-finish" id="btnFinish" onclick="showResults()" disabled style="display:none">
+        <span id="finish-label">Ver resultados</span> →
+      </button>
+    </div>
+    <div class="dots-row" id="dotsRow"></div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results-section" id="resultsSection">
+  <div class="results-inner">
+
+    <!-- Level badge -->
+    <div class="level-badge" id="levelBadge">
+      <div class="badge-tag" id="badgeTag">Tu nivel de certificación</div>
+      <div class="badge-letter" id="badgeLetter"></div>
+      <div class="badge-name" id="badgeName"></div>
+      <p class="badge-desc" id="badgeDesc"></p>
+    </div>
+
+    <!-- Score bar -->
+    <div class="score-wrap">
+      <div class="score-label" id="scoreLabel"></div>
+      <div class="score-bar-bg" id="scoreBarBg">
+        <div class="score-bar-fill" id="scoreBarFill" style="width:0%"></div>
+      </div>
+      <div class="score-bar-labels" id="scoreBarLabels"></div>
+    </div>
+
+    <!-- Dimension results -->
+    <div class="dim-results-section">
+      <div class="section-label" id="dimResultsLabel">Resultados por dimensión</div>
+      <div class="dim-results-grid" id="dimResultsGrid"></div>
+    </div>
+
+    <!-- Recommendations -->
+    <div class="recs-section" id="recsSection">
+      <div class="section-label" id="recsLabel">Recomendaciones prioritarias</div>
+      <div id="recsContainer"></div>
+    </div>
+
+    <!-- CTA / Lead capture -->
+    <div class="results-cta" id="cta-form-wrap">
+      <h3 id="cta-title">Recibí tu informe detallado por email</h3>
+      <p id="cta-sub">Te enviamos un resumen con tu nivel, recomendaciones y los próximos pasos para certificarte oficialmente.</p>
+
+      <form id="lead-form" style="max-width:480px;margin:1.5rem auto 0;text-align:left">
+        <div style="margin-bottom:1rem">
+          <label style="display:block;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.4rem;font-weight:600;opacity:0.85" id="lead-label-empresa">Nombre de la empresa</label>
+          <input type="text" id="lead-empresa" required style="width:100%;padding:0.8rem 1rem;border:1.5px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:white;font-size:1rem;border-radius:4px;font-family:inherit">
+        </div>
+        <div style="margin-bottom:1rem">
+          <label style="display:block;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.4rem;font-weight:600;opacity:0.85" id="lead-label-email">Email de contacto</label>
+          <input type="email" id="lead-email" required style="width:100%;padding:0.8rem 1rem;border:1.5px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:white;font-size:1rem;border-radius:4px;font-family:inherit">
+        </div>
+        <div style="margin-bottom:1.5rem">
+          <label style="display:block;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.4rem;font-weight:600;opacity:0.85" id="lead-label-pais">País</label>
+          <input type="text" id="lead-pais" value="Argentina" style="width:100%;padding:0.8rem 1rem;border:1.5px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:white;font-size:1rem;border-radius:4px;font-family:inherit">
+        </div>
+        <button type="submit" class="btn-cta" id="cta-btn" style="width:100%">
+          <span id="cta-btn-label">Recibir informe + iniciar postulación</span> →
+        </button>
+      </form>
+
+      <div id="lead-success" style="display:none;background:rgba(10,158,110,0.15);border:1px solid rgba(10,158,110,0.4);padding:1.5rem;border-radius:6px;margin-top:1rem">
+        <strong style="font-size:1.1rem">✓ ¡Listo!</strong>
+        <p style="margin-top:0.5rem;font-size:0.95rem;opacity:0.95" id="lead-success-msg">Te enviamos el informe a tu email. En las próximas horas te contactamos con los próximos pasos.</p>
+      </div>
+
+      <div id="lead-error" style="display:none;background:rgba(185,28,28,0.15);border:1px solid rgba(185,28,28,0.4);padding:1rem;border-radius:6px;margin-top:1rem;font-size:0.9rem"></div>
+
+      <div class="results-mail" style="margin-top:1.5rem">info@elcuartoimpacto.com</div>
+    </div>
+
+    <button class="btn-restart" onclick="restart()" id="btn-restart">↺ <span id="restart-label">Realizar nuevo diagnóstico</span></button>
+
+  </div>
+</section>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+var QUESTIONS = [
+  // DIM 0 — Liderazgo y Cultura Digital
+  {id:1,dim:0,w:3,es:"La dirección de la empresa tiene una visión clara y comunicada sobre el uso de IA y tecnología digital.",en:"Leadership has a clear, communicated vision for AI and digital technology use.",rec_es:"Desarrollar una política institucional de IA firmada por la dirección.",rec_en:"Develop an institutional AI policy signed by leadership."},
+  {id:2,dim:0,w:2,es:"Existen espacios regulares donde se debate el impacto de la IA en el negocio.",en:"There are regular spaces to discuss AI's impact on the business.",rec_es:"Crear un ciclo mensual de revisión de tendencias y casos de IA aplicada.",rec_en:"Create a monthly cycle to review AI trends and applied cases."},
+  {id:3,dim:0,w:3,es:"El equipo directivo lidera con el ejemplo en la adopción de herramientas digitales e IA.",en:"The leadership team leads by example in adopting digital and AI tools.",rec_es:"Establecer métricas de adopción digital para el equipo directivo.",rec_en:"Set digital adoption metrics for the leadership team."},
+  {id:4,dim:0,w:2,es:"La cultura organizacional promueve la experimentación y tolera el error en el aprendizaje digital.",en:"Organizational culture promotes experimentation and tolerates mistakes in digital learning.",rec_es:"Implementar un programa de pilotos seguros con retrospectivas documentadas.",rec_en:"Implement a safe pilots program with documented retrospectives."},
+  {id:5,dim:0,w:2,es:"La empresa tiene un relato claro sobre por qué y para qué usa tecnología — más allá del ahorro de costos.",en:"The company has a clear narrative about why and how it uses technology — beyond cost savings.",rec_es:"Articular el propósito tecnológico en los valores y comunicaciones de la empresa.",rec_en:"Articulate the technological purpose within company values and communications."},
+  {id:6,dim:0,w:1,es:"La adopción de nuevas tecnologías se comunica con anticipación y contexto a todos los equipos.",en:"New technology adoption is communicated in advance with context to all teams.",rec_es:"Diseñar un protocolo de comunicación interna para toda incorporación tecnológica.",rec_en:"Design an internal communication protocol for every technology rollout."},
+  // DIM 1 — Responsabilidad y Ética
+  {id:7,dim:1,w:3,es:"La empresa cuenta con criterios explícitos sobre qué procesos automatizar y cuáles no, y por qué.",en:"The company has explicit criteria for which processes to automate and which not to, and why.",rec_es:"Documentar una política de automatización ética con criterios claros de decisión.",rec_en:"Document an ethical automation policy with clear decision criteria."},
+  {id:8,dim:1,w:3,es:"Se evalúan los sesgos potenciales de las herramientas de IA antes de implementarlas.",en:"Potential biases in AI tools are evaluated before implementation.",rec_es:"Incorporar una lista de verificación de sesgos algorítmicos en todo proceso de compra de IA.",rec_en:"Add an algorithmic bias checklist to every AI procurement process."},
+  {id:9,dim:1,w:2,es:"Los datos de clientes, empleados y proveedores se gestionan con transparencia y consentimiento explícito.",en:"Data is managed with transparency and explicit consent.",rec_es:"Auditar el mapa de datos y actualizar las políticas de privacidad con lenguaje claro.",rec_en:"Audit the data map and update privacy policies with plain language."},
+  {id:10,dim:1,w:3,es:"La empresa es transparente con sus clientes cuando una interacción o decisión involucra IA.",en:"The company is transparent with customers when an interaction or decision involves AI.",rec_es:"Implementar etiquetado de IA en todos los puntos de contacto automatizados.",rec_en:"Implement AI labeling at all automated customer touchpoints."},
+  {id:11,dim:1,w:2,es:"Existe un rol responsable de las implicaciones éticas del uso de IA en la organización.",en:"There is a role responsible for the ethical implications of AI use.",rec_es:"Designar un responsable de IA ética — puede ser parte de un rol existente.",rec_en:"Designate an AI ethics owner — can be part of an existing role."},
+  {id:12,dim:1,w:2,es:"Se revisa periódicamente que los sistemas de IA utilizados siguen alineados con los valores organizacionales.",en:"AI systems in use are periodically reviewed for alignment with organizational values.",rec_es:"Establecer una revisión semestral de herramientas de IA con criterios éticos.",rec_en:"Establish a semi-annual AI tools review using ethical criteria."},
+  // DIM 2 — Estrategia y Procesos
+  {id:13,dim:2,w:3,es:"Antes de automatizar un proceso, la empresa lo analiza, documenta y optimiza.",en:"Before automating a process, the company analyzes, documents, and optimizes it.",rec_es:"Establecer un flujo obligatorio de mapeo de procesos antes de toda automatización.",rec_en:"Establish a mandatory process mapping flow before any automation initiative."},
+  {id:14,dim:2,w:2,es:"Existe una hoja de ruta tecnológica alineada con los objetivos estratégicos del negocio.",en:"There is a technology roadmap aligned with the business's strategic objectives.",rec_es:"Construir un roadmap de IA a 12-24 meses vinculado a los OKRs del negocio.",rec_en:"Build a 12-24 month AI roadmap linked to business OKRs."},
+  {id:15,dim:2,w:2,es:"Se miden los resultados de las iniciativas de IA implementadas (ROI, ahorro de tiempo, calidad).",en:"Results of implemented AI initiatives are measured (ROI, time savings, quality).",rec_es:"Implementar un dashboard de impacto de IA con indicadores cuantitativos y cualitativos.",rec_en:"Implement an AI impact dashboard with quantitative and qualitative indicators."},
+  {id:16,dim:2,w:3,es:"La empresa tiene un inventario actualizado de todas las herramientas de IA que utiliza.",en:"The company has an updated inventory of all AI tools it uses.",rec_es:"Crear un registro oficial de herramientas de IA con responsable por herramienta.",rec_en:"Create an official AI tools register with an owner per tool."},
+  {id:17,dim:2,w:2,es:"Los procesos críticos del negocio tienen respaldo humano en caso de fallo tecnológico.",en:"Critical business processes have human backup in case of technology failure.",rec_es:"Documentar planes de contingencia para los procesos más dependientes de IA.",rec_en:"Document contingency plans for the most AI-dependent processes."},
+  {id:18,dim:2,w:3,agentic:true,es:"La empresa explora o utiliza agentes de IA autónomos para tareas repetitivas o de coordinación.",en:"The company explores or uses autonomous AI agents for repetitive or coordination tasks.",rec_es:"Identificar los flujos de trabajo más aptos para implementar un agente de IA.",rec_en:"Identify the workflows most suited for an AI agent in the next 6 months."},
+  {id:19,dim:2,w:2,agentic:true,es:"Los agentes de IA utilizados operan dentro de límites definidos, con supervisión humana clara.",en:"AI agents in use operate within defined limits with clear human oversight.",rec_es:"Establecer protocolos de supervisión y límites de autonomía para cada agente en producción.",rec_en:"Establish oversight protocols and autonomy boundaries for each agent in production."},
+  // DIM 3 — Personas y Bienestar
+  {id:20,dim:3,w:3,es:"La empresa invierte en formación continua de su equipo en habilidades digitales e IA.",en:"The company invests in continuous training for its team in digital and AI skills.",rec_es:"Diseñar un plan de desarrollo digital individual para cada puesto clave.",rec_en:"Design an individual digital development plan for each key position."},
+  {id:21,dim:3,w:3,es:"La automatización se usa para liberar a las personas de tareas repetitivas — no para intensificar su carga.",en:"Automation is used to free people from repetitive tasks — not to intensify their workload.",rec_es:"Realizar una encuesta de bienestar post-automatización y actuar sobre los resultados.",rec_en:"Conduct a post-automation wellbeing survey and act on the results."},
+  {id:22,dim:3,w:2,es:"Se mide el impacto de la tecnología en el bienestar y la satisfacción del equipo.",en:"The impact of technology on team wellbeing and satisfaction is measured.",rec_es:"Incluir indicadores de bienestar digital en la encuesta de clima organizacional.",rec_en:"Include digital wellbeing indicators in the organizational climate survey."},
+  {id:23,dim:3,w:2,es:"Hay espacios protegidos para el pensamiento profundo y la creatividad — sin urgencia digital.",en:"There are protected spaces for deep thinking and creativity — free from digital urgency.",rec_es:"Institucionalizar tiempo sin notificaciones por equipo cada semana.",rec_en:"Institutionalize notification-free time per team each week."},
+  {id:24,dim:3,w:2,es:"Las personas desarrollan habilidades que la IA no puede replicar: pensamiento crítico, empatía, liderazgo.",en:"People develop skills AI cannot replicate: critical thinking, empathy, leadership.",rec_es:"Incorporar habilidades blandas y criterio humano en los planes de formación anuales.",rec_en:"Incorporate soft skills and human judgment into annual training plans."},
+  {id:25,dim:3,w:1,es:"La comunicación interna sobre cambios tecnológicos considera el impacto emocional en los equipos.",en:"Internal communication about tech changes considers the emotional impact on teams.",rec_es:"Capacitar a líderes en comunicación empática del cambio tecnológico.",rec_en:"Train leaders in empathetic communication of technological change."},
+  // DIM 4 — Impacto e Inclusión
+  {id:26,dim:4,w:3,es:"La empresa considera el impacto social de sus decisiones tecnológicas — no solo la eficiencia operativa.",en:"The company considers the social impact of its technological decisions — not just operational efficiency.",rec_es:"Incorporar un análisis de impacto social en la evaluación de nuevas tecnologías.",rec_en:"Incorporate a social impact analysis into the technology evaluation process."},
+  {id:27,dim:4,w:2,es:"Las herramientas de IA que usa la empresa son accesibles para todo el equipo, sin importar su nivel previo.",en:"AI tools used by the company are accessible to the entire team, regardless of prior tech level.",rec_es:"Realizar una auditoría de accesibilidad digital interna y diseñar un plan de nivelación.",rec_en:"Conduct an internal digital accessibility audit and design a leveling plan."},
+  {id:28,dim:4,w:2,es:"La empresa mide y gestiona su huella de carbono digital (consumo energético, obsolescencia de dispositivos).",en:"The company measures and manages its digital carbon footprint (energy, device obsolescence).",rec_es:"Incorporar indicadores de sostenibilidad digital en el reporte de RSE.",rec_en:"Add digital sustainability indicators to the company's CSR report."},
+  {id:29,dim:4,w:3,es:"La empresa usa la tecnología para ampliar oportunidades, especialmente para grupos con menos acceso digital.",en:"The company uses technology to expand opportunities for groups with less digital access.",rec_es:"Identificar al menos un programa de inclusión digital en la cadena de valor.",rec_en:"Identify at least one digital inclusion program or initiative in the value chain."},
+  {id:30,dim:4,w:2,es:"La organización contribuye activamente al ecosistema: comparte aprendizajes o apoya a otras empresas.",en:"The organization actively contributes to the ecosystem: shares learnings or supports other companies.",rec_es:"Establecer al menos una instancia anual de intercambio con el ecosistema.",rec_en:"Establish at least one annual ecosystem exchange."},
+];
+
+var DIMS = {
+  es: ["Liderazgo y Cultura Digital","Responsabilidad y Ética en IA","Estrategia y Procesos","Personas y Bienestar","Impacto e Inclusión"],
+  en: ["Leadership & Digital Culture","Responsibility & AI Ethics","Strategy & Processes","People & Wellbeing","Impact & Inclusion"]
+};
+var DIM_ICONS = ["🧭","⚖️","⚙️","🌱","🌍"];
+var LEVEL_COLORS = {A1:"#89366C",A2:"#c8920a",A3:"#1e3a5f",A4:"#2D7DD2",A5:"#0A9E6E"};
+var MAX_SCORE = QUESTIONS.reduce(function(a,q){return a+q.w*4},0);
+
+var LEVELS = {
+  es:{
+    A1:{name:"Consciente",desc:"Tu organización reconoce la importancia de la IA responsable y está dando sus primeros pasos. Hay conciencia del Cuarto Impacto, pero aún falta estructura y sistematización."},
+    A2:{name:"Adoptante",desc:"Integrás IA en procesos con criterio básico. Hay iniciativas concretas, aunque sin sistematización ni gobernanza formal establecida."},
+    A3:{name:"Responsable",desc:"Operás con ética digital y cuidás el bienestar de las personas. La IA está integrada con propósito, criterio y controles claros."},
+    A4:{name:"Transformadora",desc:"La IA está embebida en cultura y estrategia. Tu organización es referente en su industria y comienza a operar con agentes autónomos con criterio."},
+    A5:{name:"Referente",desc:"Sos modelo para otras organizaciones. Liderás el movimiento del Cuarto Impacto y formás parte de la red global de Empresas A certificadas."},
+  },
+  en:{
+    A1:{name:"Aware",desc:"Your organization recognizes the importance of responsible AI and is taking its first steps. Awareness of the Fourth Impact exists, but structure is still lacking."},
+    A2:{name:"Adopting",desc:"You integrate AI into processes with basic criteria. Concrete initiatives exist, though without systematization or formal governance."},
+    A3:{name:"Responsible",desc:"You operate with digital ethics and care for people's wellbeing. AI is integrated with purpose, judgment, and clear controls."},
+    A4:{name:"Transformative",desc:"AI is embedded in culture and strategy. Your organization leads in its industry and begins operating AI agents with judgment."},
+    A5:{name:"Reference",desc:"You are a model for other organizations. You lead the Fourth Impact movement and are part of the global network of certified A Companies."},
+  }
+};
+
+var OPTS_LABELS = {
+  es:["Nunca / No aplica","En desarrollo","Parcialmente","Mayormente sí","Sí, sistemáticamente"],
+  en:["Never / N/A","In development","Partially","Mostly yes","Yes, systematically"]
+};
+
+var TRANSLATIONS = {
+  'nav-back-label':{es:'Volver al sitio',en:'Back to site'},
+  'hero-tag':{es:'El Cuarto Impacto',en:'The Fourth Impact'},
+  'hero-title-em':{es:'Empresa Aumentada',en:'Augmented Company'},
+  'hero-sub':{es:'Diagnóstico de madurez en inteligencia artificial responsable para organizaciones',en:'AI maturity diagnostic for organizations committed to responsible digital transformation'},
+  'meta-q':{es:'30 preguntas',en:'30 questions'},
+  'meta-t':{es:'~8 min',en:'~8 min'},
+  'btn-start-label':{es:'Iniciar diagnóstico',en:'Start diagnostic'},
+  'prev-label':{es:'Anterior',en:'Previous'},
+  'next-label':{es:'Siguiente',en:'Next'},
+  'finish-label':{es:'Ver resultados',en:'View results'},
+  'badgeTag':{es:'Tu nivel de certificación',en:'Your certification level'},
+  'dimResultsLabel':{es:'Resultados por dimensión',en:'Results by dimension'},
+  'recsLabel':{es:'Recomendaciones prioritarias',en:'Priority recommendations'},
+  'cta-title':{es:'¿Listo para certificarte?',en:'Ready to get certified?'},
+  'cta-sub':{es:'Solicitá tu proceso oficial de Certificación A con el equipo de El Cuarto Impacto',en:'Request your official A Certification process with the El Cuarto Impacto team'},
+  'cta-btn-label':{es:'Solicitar certificación oficial',en:'Request official certification'},
+  'restart-label':{es:'Realizar nuevo diagnóstico',en:'New diagnostic'},
+  'agenticTag':{es:'Agéntica',en:'Agentic'},
+};
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
+var state = {
+  lang: 'es',
+  current: 0,
+  answers: {},
+};
+
+function getLang(){return state.lang}
+function getLevel(pct){
+  if(pct<20) return 'A1';
+  if(pct<40) return 'A2';
+  if(pct<60) return 'A3';
+  if(pct<80) return 'A4';
+  return 'A5';
+}
+
+// ── LANG ──────────────────────────────────────────────────────────────────────
+function toggleLang(){
+  state.lang = state.lang==='es'?'en':'es';
+  document.getElementById('lang-btn').textContent = state.lang==='es'?'EN':'ES';
+  document.documentElement.lang = state.lang;
+  applyLang();
+}
+function applyLang(){
+  var L = state.lang;
+  Object.keys(TRANSLATIONS).forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.innerHTML = TRANSLATIONS[id][L];
+  });
+  // If on form, re-render current question
+  var fs = document.getElementById('formSection');
+  if(fs.classList.contains('active')) renderQuestion(state.current);
+}
+
+// ── NAV SCROLL ────────────────────────────────────────────────────────────────
+window.addEventListener('scroll',function(){
+  document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>10);
+});
+
+// ── FLOW ──────────────────────────────────────────────────────────────────────
+function startDiagnostic(){
+  document.getElementById('heroSection').style.display='none';
+  document.getElementById('formSection').classList.add('active');
+  document.getElementById('progressBarWrap').style.display='block';
+  state.current=0;
+  state.answers={};
+  renderQuestion(0);
+  buildDots();
+  window.scrollTo(0,0);
+}
+
+function navigate(dir){
+  var next = state.current + dir;
+  if(next<0||next>=QUESTIONS.length) return;
+  var qText = document.getElementById('qText');
+  var opts = document.getElementById('optsContainer');
+  qText.classList.remove('in');
+  opts.classList.remove('in');
+  setTimeout(function(){
+    state.current = next;
+    renderQuestion(next);
+    setTimeout(function(){
+      qText.classList.add('in');
+      opts.classList.add('in');
+    },30);
+  },160);
+}
+
+function renderQuestion(idx){
+  var L = getLang();
+  var q = QUESTIONS[idx];
+  var total = QUESTIONS.length;
+
+  // Dimension label
+  document.getElementById('dimIcon').textContent = DIM_ICONS[q.dim];
+  document.getElementById('dimLabel').textContent = DIMS[L][q.dim];
+
+  // Agentic badge
+  var atag = document.getElementById('agenticTag');
+  atag.style.display = q.agentic ? 'inline-flex' : 'none';
+  atag.textContent = TRANSLATIONS['agenticTag'][L];
+
+  // Counter
+  document.getElementById('qCounter').textContent = (idx+1) + ' / ' + total;
+
+  // Question
+  document.getElementById('qText').textContent = L==='es' ? q.es : q.en;
+
+  // Options
+  var opts = OPTS_LABELS[L];
+  var cont = document.getElementById('optsContainer');
+  cont.innerHTML = '';
+  var curVal = state.answers[q.id];
+  opts.forEach(function(label, val){
+    var div = document.createElement('div');
+    div.className = 'opt' + (curVal===val?' sel':'');
+    div.setAttribute('data-val', val);
+    div.innerHTML =
+      '<div class="opt-radio"></div>' +
+      '<span class="opt-label">'+label+'</span>' +
+      '<span class="opt-dots">'+'●'.repeat(val)+'○'.repeat(4-val)+'</span>';
+    div.addEventListener('click', function(){
+      state.answers[q.id] = val;
+      cont.querySelectorAll('.opt').forEach(function(o){o.classList.remove('sel')});
+      div.classList.add('sel');
+      updateProgress();
+      updateDots();
+      updateNavBtns();
+      // Auto-advance after short delay (optional UX)
+      if(idx < total-1){
+        setTimeout(function(){ navigate(1); }, 320);
+      }
+    });
+    cont.appendChild(div);
+  });
+
+  // Nav buttons
+  updateNavBtns();
+  updateProgress();
+  updateDots();
+
+  // Animate in
+  setTimeout(function(){
+    document.getElementById('qText').classList.add('in');
+    document.getElementById('optsContainer').classList.add('in');
+  },20);
+}
+
+function updateNavBtns(){
+  var idx = state.current;
+  var total = QUESTIONS.length;
+  var isLast = idx === total-1;
+
+  document.getElementById('btnPrev').disabled = idx===0;
+  document.getElementById('btnNext').style.display = isLast?'none':'flex';
+  document.getElementById('btnFinish').style.display = isLast?'flex':'none';
+  // Always enabled on the last question — we validate on click and jump to any unanswered one
+  document.getElementById('btnFinish').disabled = false;
+}
+
+function updateProgress(){
+  var pct = Math.round((Object.keys(state.answers).length / QUESTIONS.length)*100);
+  document.getElementById('progressBarFill').style.width = pct+'%';
+}
+
+function buildDots(){
+  var row = document.getElementById('dotsRow');
+  row.innerHTML = '';
+  QUESTIONS.forEach(function(q,i){
+    var d = document.createElement('div');
+    d.className = 'dot';
+    d.id = 'dot-'+i;
+    d.addEventListener('click',function(){
+      var qText = document.getElementById('qText');
+      var opts = document.getElementById('optsContainer');
+      qText.classList.remove('in');
+      opts.classList.remove('in');
+      setTimeout(function(){
+        state.current=i;
+        renderQuestion(i);
+        setTimeout(function(){qText.classList.add('in');opts.classList.add('in');},30);
+      },160);
+    });
+    row.appendChild(d);
+  });
+}
+
+function updateDots(){
+  QUESTIONS.forEach(function(q,i){
+    var d = document.getElementById('dot-'+i);
+    if(!d) return;
+    d.className = 'dot' +
+      (i===state.current?' current':'') +
+      (state.answers[q.id]!==undefined&&i!==state.current?' answered':'');
+  });
+}
+
+// ── RESULTS ───────────────────────────────────────────────────────────────────
+function showResults(){
+  var L = getLang();
+
+  // Validate: are all questions answered? If not, jump to the first missing one.
+  var firstMissing = -1;
+  for(var k=0;k<QUESTIONS.length;k++){
+    if(state.answers[QUESTIONS[k].id] === undefined){ firstMissing = k; break; }
+  }
+  if(firstMissing !== -1){
+    var msg = L==='es'
+      ? 'Te falta responder la pregunta '+(firstMissing+1)+' de 30. Te llevo a ella.'
+      : 'Question '+(firstMissing+1)+' of 30 is still unanswered. Taking you there.';
+    alert(msg);
+    var qText = document.getElementById('qText');
+    var opts = document.getElementById('optsContainer');
+    qText.classList.remove('in'); opts.classList.remove('in');
+    setTimeout(function(){
+      state.current = firstMissing;
+      renderQuestion(firstMissing);
+      setTimeout(function(){qText.classList.add('in');opts.classList.add('in');},30);
+    },160);
+    window.scrollTo(0,0);
+    return;
+  }
+
+  // Compute scores
+  var total=0, dimScores=[0,0,0,0,0], dimMax=[0,0,0,0,0], lowQ=[];
+  QUESTIONS.forEach(function(q){
+    var val = state.answers[q.id]||0;
+    total += val*q.w;
+    dimScores[q.dim] += val*q.w;
+    dimMax[q.dim] += q.w*4;
+    if(val<=1) lowQ.push(q);
+  });
+  var pct = Math.round((total/MAX_SCORE)*100);
+  var level = getLevel(pct);
+  var lColor = LEVEL_COLORS[level];
+  var lInfo = LEVELS[L][level];
+  var dimPct = dimScores.map(function(s,i){return Math.round((s/dimMax[i])*100)});
+  var recs = lowQ.slice(0,5);
+
+  // Apply lang strings
+  applyLang();
+
+  // Badge
+  document.getElementById('levelBadge').style.borderColor = lColor;
+  document.getElementById('badgeTag').style.color = lColor;
+  document.getElementById('badgeLetter').textContent = level;
+  document.getElementById('badgeLetter').style.color = lColor;
+  document.getElementById('badgeName').textContent = lInfo.name;
+  document.getElementById('badgeName').style.color = lColor;
+  document.getElementById('badgeDesc').textContent = lInfo.desc;
+
+  // Score bar
+  document.getElementById('scoreLabel').innerHTML =
+    (L==='es'?'Puntaje total: ':'Total score: ') +
+    '<strong>'+total+'</strong> ' +
+    (L==='es'?'de ':'of ') + MAX_SCORE + ' ('+pct+'%)';
+  setTimeout(function(){
+    document.getElementById('scoreBarFill').style.width = pct+'%';
+    document.getElementById('scoreBarFill').style.background = lColor;
+  }, 200);
+
+  // Score marks + labels
+  var bg = document.getElementById('scoreBarBg');
+  ['A1','A2','A3','A4','A5'].forEach(function(l,i){
+    var m = document.createElement('div');
+    m.className = 'score-mark';
+    m.style.left = [20,40,60,80,100][i]+'%';
+    m.style.background = LEVEL_COLORS[l];
+    bg.appendChild(m);
+  });
+  var labelsDiv = document.getElementById('scoreBarLabels');
+  labelsDiv.innerHTML = '';
+  ['A1','A2','A3','A4','A5'].forEach(function(l){
+    var s = document.createElement('span');
+    s.textContent = l;
+    s.style.color = LEVEL_COLORS[l];
+    s.style.fontWeight = l===level?'700':'400';
+    labelsDiv.appendChild(s);
+  });
+
+  // Dim results
+  var grid = document.getElementById('dimResultsGrid');
+  grid.innerHTML = '';
+  DIMS[L].forEach(function(name,i){
+    var row = document.createElement('div');
+    row.className = 'dim-result-row';
+    row.innerHTML =
+      '<span class="dim-result-icon">'+DIM_ICONS[i]+'</span>' +
+      '<span class="dim-result-name">'+name+'</span>' +
+      '<div class="dim-result-bar-bg"><div class="dim-result-bar-fill" style="width:0%;background:'+lColor+'" data-pct="'+dimPct[i]+'"></div></div>' +
+      '<span class="dim-result-pct">'+dimPct[i]+'%</span>';
+    grid.appendChild(row);
+  });
+  setTimeout(function(){
+    grid.querySelectorAll('.dim-result-bar-fill').forEach(function(el){
+      el.style.width = el.getAttribute('data-pct')+'%';
+    });
+  },300);
+
+  // Recommendations
+  var recsCont = document.getElementById('recsContainer');
+  recsCont.innerHTML = '';
+  if(recs.length===0){
+    recsCont.innerHTML = '<p style="font-family:var(--serif);font-size:1rem;font-style:italic;color:var(--ink-mid)">'+
+      (L==='es'?'¡Excelente! No hay áreas críticas que mejorar en este diagnóstico.':'Excellent! No critical areas to improve in this diagnostic.')+'</p>';
+  } else {
+    recs.forEach(function(r,i){
+      var card = document.createElement('div');
+      card.className = 'rec-card';
+      card.innerHTML =
+        '<div class="rec-num" style="background:'+lColor+'">'+(i+1)+'</div>' +
+        '<div class="rec-body">' +
+          '<p class="rec-q">'+(L==='es'?r.es:r.en)+'</p>' +
+          '<p class="rec-action"><strong>→</strong> '+(L==='es'?r.rec_es:r.rec_en)+'</p>' +
+        '</div>';
+      recsCont.appendChild(card);
+    });
+  }
+  document.getElementById('recsSection').style.display = recs.length>0?'block':'none';
+
+  // Guardar resultado para el form de captura
+  window.__diagnostico_resultado = {
+    idioma: L,
+    respuestas: state.answers,
+    puntajes: {
+      total: total,
+      dimensiones: dimScores,
+      dim_pct: dimPct,
+      pct: pct,
+    },
+    nivel_resultado: level,
+    puntaje_total: total,
+  };
+
+  // Show results
+  document.getElementById('formSection').classList.remove('active');
+  document.getElementById('progressBarWrap').style.display='none';
+  document.getElementById('resultsSection').classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// ── BACKEND: enviar diagnóstico al servidor ──────────────────────────────────
+var BACKEND_URL = (function(){
+  var host = window.location.hostname;
+  if (host === 'localhost' || host === '127.0.0.1') return 'http://localhost:3100';
+  return ''; // mismo dominio en producción → /api
+})();
+
+document.addEventListener('submit', function(e){
+  if (e.target.id !== 'lead-form') return;
+  e.preventDefault();
+  enviarDiagnosticoAlBackend();
+});
+
+function enviarDiagnosticoAlBackend(){
+  var L = state.lang;
+  var res = window.__diagnostico_resultado;
+  if (!res) {
+    showLeadError(L==='es'?'No hay un resultado para enviar.':'No result to send.');
+    return;
+  }
+
+  var nombre_empresa = document.getElementById('lead-empresa').value.trim();
+  var emailAddr      = document.getElementById('lead-email').value.trim();
+  var pais           = document.getElementById('lead-pais').value.trim() || 'Argentina';
+
+  if (!nombre_empresa || !emailAddr) {
+    showLeadError(L==='es'?'Completá nombre de empresa y email.':'Fill in company name and email.');
+    return;
+  }
+
+  var btn = document.getElementById('cta-btn');
+  var lbl = document.getElementById('cta-btn-label');
+  var originalLbl = lbl.textContent;
+  lbl.textContent = L==='es'?'Enviando…':'Sending…';
+  btn.style.opacity = '0.7';
+  btn.style.pointerEvents = 'none';
+
+  fetch(BACKEND_URL + '/api/diagnosticos', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(Object.assign({}, res, {
+      email: emailAddr,
+      nombre_empresa: nombre_empresa,
+      pais: pais,
+    })),
+  })
+  .then(function(r){ return r.json().then(function(b){ return {ok:r.ok, body:b}; }); })
+  .then(function(out){
+    if (!out.ok) throw new Error(out.body.error || 'Error al enviar');
+    // Éxito: ocultar form, mostrar mensaje
+    document.getElementById('lead-form').style.display = 'none';
+    document.getElementById('lead-error').style.display = 'none';
+    document.getElementById('lead-success').style.display = 'block';
+    document.getElementById('lead-success-msg').textContent = L==='es'
+      ? 'Te enviamos el informe a ' + emailAddr + '. En las próximas horas te contactamos con los próximos pasos para la certificación.'
+      : 'We sent the report to ' + emailAddr + '. We will follow up shortly with next steps for certification.';
+  })
+  .catch(function(err){
+    lbl.textContent = originalLbl;
+    btn.style.opacity = '1';
+    btn.style.pointerEvents = 'auto';
+    showLeadError((L==='es'?'No pudimos enviar el diagnóstico: ':'Could not send diagnostic: ') + err.message);
+  });
+}
+
+function showLeadError(msg){
+  var el = document.getElementById('lead-error');
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function restart(){
+  state.answers={};
+  state.current=0;
+  document.getElementById('resultsSection').classList.remove('active');
+  // Remove old score marks
+  document.getElementById('scoreBarBg').querySelectorAll('.score-mark').forEach(function(m){m.remove()});
+  document.getElementById('heroSection').style.display='block';
+  document.getElementById('heroSection').style.cssText='';
+  window.scrollTo(0,0);
+}
+
+// ── INIT: read lang from URL (?lang=en) so toggle carries over from main site ──
+(function initLang(){
+  var params = new URLSearchParams(window.location.search);
+  var urlLang = params.get('lang');
+  if(urlLang === 'en' || urlLang === 'es'){
+    state.lang = urlLang;
+    document.getElementById('lang-btn').textContent = urlLang==='es'?'EN':'ES';
+    document.documentElement.lang = urlLang;
+    applyLang();
+  }
+})();
+</script>
+
+</body>
+</html>
