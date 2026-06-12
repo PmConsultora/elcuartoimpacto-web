@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Adherentes · El Cuarto Impacto</title>
+<meta name="description" content="Directorio público de empresas y profesionales que adhirieron al Manifiesto del Cuarto Impacto.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'><rect x='0' y='0' width='12' height='12' rx='2.5' fill='%231e3a5f'/><rect x='15' y='0' width='12' height='12' rx='2.5' fill='%231e3a5f'/><rect x='0' y='15' width='12' height='12' rx='2.5' fill='%231e3a5f'/><rect x='15' y='15' width='12' height='12' rx='2.5' fill='%23f4b822'/></svg>">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@400;500;600;700&display=swap');
+:root {
+  --navy: #0f2137; --navy-mid: #1e3a5f; --gold: #c8920a; --goldb: #f4b822;
+  --paper: #faf8f3; --paper-warm: #f4eedf; --celeste-bg: #eef5fc;
+  --ink: #141210; --ink-soft: #3a3530; --muted: #76706a; --border: #ece5d5;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; }
+h1, h2, h3 { font-family: var(--serif); color: var(--navy); }
+a { color: var(--navy-mid); text-decoration: none; }
+a:hover { color: var(--gold); }
+
+.nav {
+  background: var(--navy); color: var(--paper);
+  padding: 1rem 2rem; box-shadow: 0 2px 12px rgba(15,33,55,0.15);
+}
+.nav-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 0.75rem; color: var(--paper); }
+.nav-logo svg { width: 26px; height: 26px; }
+.nav-logo-text { font-family: var(--serif); font-size: 1.1rem; font-style: italic; font-weight: 600; }
+.nav-logo-text em { color: var(--goldb); font-style: normal; }
+.lang-btn {
+  background: transparent; border: 1px solid rgba(244,184,34,0.4);
+  color: var(--goldb); font-family: var(--sans); font-size: 0.65rem;
+  font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 0.4rem 0.9rem; border-radius: 3px; cursor: pointer;
+}
+
+.hero {
+  background:
+    radial-gradient(ellipse at top, rgba(244,184,34,0.08) 0%, transparent 50%),
+    linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  color: var(--paper); padding: 4rem 1.5rem 5rem; text-align: center;
+}
+.hero h1 { color: var(--paper); font-size: 2.75rem; font-style: italic; font-weight: 500; margin-bottom: 1rem; }
+.hero h1 em { color: var(--goldb); }
+.hero p { color: rgba(200,221,238,0.85); font-family: var(--serif); font-style: italic; font-size: 1.2rem; max-width: 580px; margin: 0 auto; }
+.eyebrow { color: var(--goldb); font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 600; margin-bottom: 1rem; }
+
+.stats {
+  max-width: 800px; margin: -3rem auto 3rem; padding: 0 1.5rem;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+}
+.stat {
+  background: white; padding: 1.5rem; border-radius: 6px; text-align: center;
+  border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(15,33,55,0.06);
+}
+.stat .num { font-family: var(--serif); font-size: 2.5rem; color: var(--navy); font-style: italic; font-weight: 600; }
+.stat .lbl { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-top: 0.3rem; font-weight: 600; }
+
+.container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem 5rem; }
+
+.search-bar {
+  background: white; padding: 1.5rem; border-radius: 6px;
+  border: 1px solid var(--border); margin-bottom: 2rem;
+  display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
+}
+.search-bar input {
+  flex: 1; min-width: 200px;
+  padding: 0.7rem 1rem; border: 1.5px solid var(--border); border-radius: 4px;
+  font-family: var(--sans); font-size: 0.95rem;
+}
+.search-bar input:focus { outline: none; border-color: var(--gold); }
+.search-bar select {
+  padding: 0.7rem 1rem; border: 1.5px solid var(--border); border-radius: 4px;
+  font-family: var(--sans); font-size: 0.95rem; background: white;
+}
+
+.grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem;
+}
+.card {
+  background: white; padding: 1.5rem; border-radius: 6px;
+  border: 1px solid var(--border); transition: all 0.2s;
+  position: relative;
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,33,55,0.08); border-color: var(--goldb); }
+.card-name {
+  font-family: var(--serif); font-size: 1.25rem; font-weight: 600;
+  color: var(--navy); margin-bottom: 0.25rem;
+}
+.card-role { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.75rem; }
+.card-empresa {
+  font-size: 0.95rem; color: var(--ink-soft); font-weight: 500;
+  padding-top: 0.6rem; border-top: 1px solid var(--border); margin-bottom: 0.6rem;
+}
+.card-pais { display: inline-block; font-size: 0.75rem; color: var(--muted); }
+.card-pais::before { content: '📍 '; }
+.card-mensaje {
+  margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid var(--border);
+  font-family: var(--serif); font-style: italic; font-size: 0.95rem;
+  color: var(--ink-soft); line-height: 1.5;
+}
+.card-fecha { position: absolute; top: 1rem; right: 1.2rem; font-size: 0.7rem; color: var(--muted); }
+.card-links { margin-top: 0.6rem; display: flex; gap: 0.5rem; }
+.card-links a {
+  color: var(--muted); font-size: 0.78rem;
+  padding: 0.2rem 0.5rem; border: 1px solid var(--border);
+  border-radius: 3px; transition: all 0.2s;
+}
+.card-links a:hover { color: var(--gold); border-color: var(--gold); }
+
+.empty, .loading {
+  text-align: center; padding: 4rem 2rem; color: var(--muted); font-style: italic;
+}
+
+.cta-section {
+  text-align: center; padding: 4rem 2rem; background: var(--paper-warm);
+  border-top: 4px solid var(--goldb); margin-top: 4rem;
+}
+.cta-section h2 {
+  font-family: var(--serif); font-size: 2rem; font-style: italic;
+  color: var(--navy); margin-bottom: 1rem;
+}
+.cta-section p { color: var(--muted); margin-bottom: 1.5rem; }
+.btn-gold {
+  display: inline-block; background: var(--goldb); color: var(--navy);
+  padding: 0.9rem 2rem; border-radius: 4px; font-weight: 600;
+  font-size: 0.95rem; transition: all 0.2s;
+}
+.btn-gold:hover { background: var(--gold); color: white; }
+
+footer { background: var(--navy); color: rgba(200,221,238,0.7); padding: 2rem; text-align: center; font-size: 0.85rem; }
+footer a { color: var(--goldb); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg viewBox="0 0 28 28" fill="none">
+        <rect x="0" y="0" width="12" height="12" rx="2.5" fill="#c8ddee"/>
+        <rect x="15" y="0" width="12" height="12" rx="2.5" fill="#c8ddee"/>
+        <rect x="0" y="15" width="12" height="12" rx="2.5" fill="#c8ddee"/>
+        <rect x="15" y="15" width="12" height="12" rx="2.5" fill="#f4b822"/>
+      </svg>
+      <span class="nav-logo-text">El <em>Cuarto</em> Impacto</span>
+    </a>
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="eyebrow" id="eyebrow">Directorio público</div>
+  <h1 id="title">Adherentes del <em>Cuarto Impacto</em></h1>
+  <p id="subtitle">Empresas y profesionales que se comprometieron con la responsabilidad digital como cuarta dimensión del valor.</p>
+</section>
+
+<div class="stats">
+  <div class="stat"><div class="num" id="stat-total">·</div><div class="lbl" id="stat-1-lbl">Adherentes</div></div>
+  <div class="stat"><div class="num" id="stat-paises">·</div><div class="lbl" id="stat-2-lbl">Países</div></div>
+  <div class="stat"><div class="num">14</div><div class="lbl" id="stat-3-lbl">Principios</div></div>
+</div>
+
+<div class="container">
+
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Buscar por nombre, empresa, cargo...">
+    <select id="filter-pais">
+      <option value="">Todos los países</option>
+    </select>
+  </div>
+
+  <div id="content"><div class="loading">Cargando…</div></div>
+
+</div>
+
+<section class="cta-section">
+  <h2 id="cta-title">¿Querés sumarte?</h2>
+  <p id="cta-sub">Adherí al manifiesto y formá parte de este directorio.</p>
+  <a href="/adherir.html" class="btn-gold" id="cta-btn">Adherir al Manifiesto →</a>
+</section>
+
+<footer>
+  <p>El Cuarto Impacto · La responsabilidad digital como cuarta dimensión del valor empresarial</p>
+  <p style="margin-top:0.5rem"><a href="/">elcuartoimpacto.com</a> · <a href="mailto:info@elcuartoimpacto.com">info@elcuartoimpacto.com</a></p>
+</footer>
+
+<script>
+var currentLang = 'es';
+var urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('lang') === 'en') currentLang = 'en';
+
+var UI = {
+  es: {
+    eyebrow: 'Directorio público',
+    title: 'Adherentes del <em>Cuarto Impacto</em>',
+    subtitle: 'Empresas y profesionales que se comprometieron con la responsabilidad digital como cuarta dimensión del valor.',
+    stat1: 'Adherentes', stat2: 'Países', stat3: 'Principios',
+    searchPlaceholder: 'Buscar por nombre, empresa, cargo...',
+    allCountries: 'Todos los países',
+    ctaTitle: '¿Querés sumarte?',
+    ctaSub: 'Adherí al manifiesto y formá parte de este directorio.',
+    ctaBtn: 'Adherir al Manifiesto →',
+    loading: 'Cargando…',
+    empty: 'Aún no hay adherentes públicos.',
+    noResults: 'No encontramos resultados.',
+  },
+  en: {
+    eyebrow: 'Public directory',
+    title: 'Signatories of <em>The Fourth Impact</em>',
+    subtitle: 'Organizations and professionals who committed to digital responsibility as the fourth dimension of value.',
+    stat1: 'Signatories', stat2: 'Countries', stat3: 'Principles',
+    searchPlaceholder: 'Search by name, organization, role...',
+    allCountries: 'All countries',
+    ctaTitle: 'Want to join?',
+    ctaSub: 'Sign the manifesto and join the directory.',
+    ctaBtn: 'Sign the Manifesto →',
+    loading: 'Loading…',
+    empty: 'No public signatories yet.',
+    noResults: 'No matches found.',
+  }
+};
+
+function toggleLang() {
+  currentLang = currentLang === 'es' ? 'en' : 'es';
+  apply();
+  var url = new URL(window.location);
+  url.searchParams.set('lang', currentLang);
+  history.replaceState({}, '', url);
+}
+
+function apply() {
+  var t = UI[currentLang];
+  document.documentElement.lang = currentLang;
+  document.getElementById('lang-btn').textContent = currentLang === 'es' ? 'EN' : 'ES';
+  document.getElementById('eyebrow').textContent = t.eyebrow;
+  document.getElementById('title').innerHTML = t.title;
+  document.getElementById('subtitle').textContent = t.subtitle;
+  document.getElementById('stat-1-lbl').textContent = t.stat1;
+  document.getElementById('stat-2-lbl').textContent = t.stat2;
+  document.getElementById('stat-3-lbl').textContent = t.stat3;
+  document.getElementById('search').placeholder = t.searchPlaceholder;
+  document.querySelector('#filter-pais option[value=""]').textContent = t.allCountries;
+  document.getElementById('cta-title').textContent = t.ctaTitle;
+  document.getElementById('cta-sub').textContent = t.ctaSub;
+  document.getElementById('cta-btn').textContent = t.ctaBtn;
+  render();
+}
+
+var BACKEND = (function(){
+  var h = window.location.hostname;
+  if (h === 'localhost' || h === '127.0.0.1') return 'http://localhost:3100';
+  return '';
+})();
+
+var ALL = [];
+var FILTERED = [];
+
+function fmtDate(d) {
+  if (!d) return '';
+  return new Date(d).toLocaleDateString(currentLang === 'es' ? 'es-AR' : 'en-US', { day:'numeric', month:'short', year:'numeric' });
+}
+
+function escapeHtml(s) {
+  if (!s) return '';
+  return String(s).replace(/[&<>"']/g, function(c){ return ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[c]; });
+}
+
+function buildCard(a) {
+  var fullName = escapeHtml(a.nombre + ' ' + a.apellido);
+  var emp = a.empresa ? '<div class="card-empresa">'+escapeHtml(a.empresa)+'</div>' : '';
+  var cargo = a.cargo ? '<div class="card-role">'+escapeHtml(a.cargo)+'</div>' : '';
+  var msg = a.mensaje ? '<div class="card-mensaje">«'+escapeHtml(a.mensaje)+'»</div>' : '';
+  var links = '';
+  if (a.linkedin_url) links += '<a href="'+escapeHtml(a.linkedin_url)+'" target="_blank" rel="noopener">LinkedIn</a>';
+  if (a.sitio_web) links += '<a href="'+escapeHtml(a.sitio_web)+'" target="_blank" rel="noopener">Sitio web</a>';
+  return '<div class="card">'+
+    '<div class="card-fecha">'+fmtDate(a.fecha_adhesion)+'</div>'+
+    '<div class="card-name">'+fullName+'</div>'+
+    cargo +
+    emp +
+    '<div class="card-pais">'+escapeHtml(a.pais)+'</div>'+
+    (links ? '<div class="card-links">'+links+'</div>' : '') +
+    msg +
+  '</div>';
+}
+
+function render() {
+  var t = UI[currentLang];
+  var cont = document.getElementById('content');
+  if (!FILTERED.length) {
+    cont.innerHTML = '<div class="empty">'+(ALL.length ? t.noResults : t.empty)+'</div>';
+    return;
+  }
+  cont.innerHTML = '<div class="grid">'+FILTERED.map(buildCard).join('')+'</div>';
+}
+
+function applyFilter() {
+  var q = document.getElementById('search').value.toLowerCase().trim();
+  var pais = document.getElementById('filter-pais').value;
+  FILTERED = ALL.filter(function(a){
+    if (pais && a.pais !== pais) return false;
+    if (!q) return true;
+    var hay = (a.nombre+' '+a.apellido+' '+(a.empresa||'')+' '+(a.cargo||'')+' '+(a.mensaje||'')).toLowerCase();
+    return hay.indexOf(q) >= 0;
+  });
+  render();
+}
+
+document.getElementById('search').addEventListener('input', applyFilter);
+document.getElementById('filter-pais').addEventListener('change', applyFilter);
+
+// Cargar datos
+Promise.all([
+  fetch(BACKEND + '/api/adhesiones').then(function(r){ return r.json(); }),
+  fetch(BACKEND + '/api/adhesiones/stats').then(function(r){ return r.json(); }),
+]).then(function(res){
+  ALL = (res[0].data || []);
+  FILTERED = ALL.slice();
+  var stats = res[1].data || { total: 0, paises_count: 0, paises: {} };
+  document.getElementById('stat-total').textContent = stats.total || ALL.length;
+  document.getElementById('stat-paises').textContent = stats.paises_count || 0;
+  // Llenar selector de países
+  var sel = document.getElementById('filter-pais');
+  var paises = Object.keys(stats.paises || {}).sort();
+  paises.forEach(function(p){
+    var opt = document.createElement('option');
+    opt.value = p; opt.textContent = p + ' ('+stats.paises[p]+')';
+    sel.appendChild(opt);
+  });
+  apply();
+}).catch(function(e){
+  document.getElementById('content').innerHTML = '<div class="empty">No pudimos cargar los adherentes.</div>';
+});
+
+apply();
+</script>
+
+</body>
+</html>

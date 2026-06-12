@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Adherir al Manifiesto · El Cuarto Impacto</title>
+<meta name="description" content="Sumate al movimiento del Cuarto Impacto. Adherí al manifiesto, recibí el PDF oficial y formá parte del directorio público de empresas y profesionales comprometidos con la responsabilidad digital.">
+<meta property="og:title" content="Adherir al Manifiesto · El Cuarto Impacto">
+<meta property="og:description" content="Sumate al movimiento de empresas que asumen la responsabilidad digital como cuarta dimensión del valor empresarial.">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'><rect x='0' y='0' width='12' height='12' rx='2.5' fill='%231e3a5f'/><rect x='15' y='0' width='12' height='12' rx='2.5' fill='%231e3a5f'/><rect x='0' y='15' width='12' height='12' rx='2.5' fill='%231e3a5f'/><rect x='15' y='15' width='12' height='12' rx='2.5' fill='%23f4b822'/></svg>">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --navy: #0f2137; --navy-mid: #1e3a5f; --gold: #c8920a; --goldb: #f4b822;
+  --paper: #faf8f3; --paper-warm: #f4eedf; --celeste: #c8ddee; --celeste-bg: #eef5fc;
+  --ink: #141210; --ink-soft: #3a3530; --muted: #76706a; --border: #ece5d5;
+  --success: #047857; --error: #b91c1c;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans); background: var(--paper); color: var(--ink);
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { font-family: var(--serif); color: var(--navy); letter-spacing: -0.01em; line-height: 1.2; }
+a { color: var(--navy-mid); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--gold); }
+
+/* ── NAV ─────────────────────────────── */
+.nav {
+  background: var(--navy); color: var(--paper);
+  padding: 1rem 2rem; position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 12px rgba(15,33,55,0.15);
+}
+.nav-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+}
+.nav-logo { display: flex; align-items: center; gap: 0.75rem; }
+.nav-logo svg { width: 26px; height: 26px; }
+.nav-logo-text {
+  font-family: var(--serif); font-size: 1.1rem; font-weight: 600;
+  color: var(--paper); font-style: italic;
+}
+.nav-logo-text em { color: var(--goldb); font-style: normal; }
+.nav-right { display: flex; align-items: center; gap: 1rem; }
+.lang-btn {
+  background: transparent; border: 1px solid rgba(244,184,34,0.4);
+  color: var(--goldb); font-family: var(--sans); font-size: 0.65rem;
+  font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 0.4rem 0.9rem; border-radius: 3px; cursor: pointer;
+  transition: all 0.2s;
+}
+.lang-btn:hover { background: rgba(244,184,34,0.1); }
+.back-link {
+  color: rgba(200,221,238,0.7); font-size: 0.85rem;
+  display: flex; align-items: center; gap: 0.3rem;
+}
+.back-link:hover { color: white; }
+
+/* ── HERO ─────────────────────────────── */
+.hero {
+  background:
+    radial-gradient(ellipse at top, rgba(244,184,34,0.08) 0%, transparent 50%),
+    linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  color: var(--paper); padding: 5rem 1.5rem 6rem; text-align: center; position: relative;
+}
+.hero-inner { max-width: 740px; margin: 0 auto; }
+.eyebrow {
+  display: inline-block; color: var(--goldb); font-size: 0.72rem;
+  letter-spacing: 0.28em; text-transform: uppercase; font-weight: 600;
+  margin-bottom: 1.5rem; padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(244,184,34,0.3);
+}
+.hero h1 {
+  color: var(--paper); font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-style: italic; font-weight: 500; margin-bottom: 1.5rem; line-height: 1.05;
+}
+.hero h1 em { color: var(--goldb); font-style: italic; font-weight: 600; }
+.hero-sub {
+  font-family: var(--serif); font-size: 1.25rem; font-style: italic;
+  color: rgba(200,221,238,0.85); max-width: 580px; margin: 0 auto 2.5rem;
+  line-height: 1.5;
+}
+.hero-stats {
+  display: flex; justify-content: center; gap: 3rem; margin-top: 2.5rem;
+  padding-top: 2.5rem; border-top: 1px solid rgba(244,184,34,0.15);
+}
+.hero-stat .num {
+  font-family: var(--serif); font-size: 2.5rem; color: var(--goldb);
+  font-weight: 600; font-style: italic; line-height: 1;
+}
+.hero-stat .lbl {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em;
+  color: rgba(200,221,238,0.6); margin-top: 0.5rem;
+}
+
+/* ── CONTAINER ─────────────────────────────── */
+.container { max-width: 740px; margin: 0 auto; padding: 4rem 1.5rem; }
+.section { margin-bottom: 4rem; }
+.section-eyebrow {
+  display: block; color: var(--gold); font-size: 0.7rem;
+  letter-spacing: 0.25em; text-transform: uppercase; font-weight: 600;
+  margin-bottom: 0.5rem; text-align: center;
+}
+.section-title {
+  font-family: var(--serif); font-size: 2rem; font-style: italic;
+  text-align: center; color: var(--navy); margin-bottom: 3rem; font-weight: 500;
+}
+
+/* ── FOUNDATION ─────────────────────────────── */
+.foundation p {
+  margin-bottom: 1.25rem; text-align: justify; hyphens: auto;
+  color: var(--ink-soft); font-size: 1.05rem;
+}
+.pull {
+  margin: 2rem 0; padding: 1.25rem 0 1.25rem 1.5rem;
+  border-left: 3px solid var(--goldb);
+  font-family: var(--serif); font-style: italic; font-size: 1.35rem;
+  color: var(--navy-mid); line-height: 1.45;
+}
+
+/* ── PRINCIPLES ─────────────────────────────── */
+.principle {
+  margin-bottom: 3.5rem; padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+.principle:last-child { border-bottom: none; }
+.principle-num {
+  text-align: center; font-family: var(--serif); font-style: italic;
+  font-size: 3.5rem; color: var(--goldb); line-height: 1;
+  margin-bottom: 0.75rem; font-weight: 600;
+}
+.principle-title {
+  text-align: center; font-family: var(--serif); font-size: 1.65rem;
+  font-weight: 600; color: var(--navy); margin-bottom: 1.5rem; line-height: 1.25;
+  max-width: 600px; margin-left: auto; margin-right: auto;
+}
+.principle-body p {
+  text-align: justify; hyphens: auto; color: var(--ink-soft);
+  margin-bottom: 1rem; font-size: 1rem; line-height: 1.7;
+}
+
+/* ── CLOSING ─────────────────────────────── */
+.closing .text-block p {
+  text-align: justify; hyphens: auto; color: var(--ink-soft);
+  margin-bottom: 1.25rem; font-size: 1.05rem;
+}
+.call-list { text-align: center; margin: 2.5rem 0; }
+.call {
+  font-family: var(--serif); font-style: italic; font-size: 1.25rem;
+  color: var(--navy); line-height: 1.5; margin-bottom: 0.25rem;
+}
+.call.gold { color: var(--gold); font-weight: 600; margin-top: 1.5rem; }
+
+.signature {
+  text-align: center; margin-top: 3rem; padding-top: 2rem;
+  border-top: 1px solid var(--border); position: relative;
+}
+.signature::before {
+  content: ''; position: absolute; top: -1px; left: 50%;
+  transform: translateX(-50%); width: 60px; height: 2px; background: var(--goldb);
+}
+.signature-name {
+  font-family: var(--serif); font-style: italic; font-size: 1.5rem;
+  color: var(--navy); font-weight: 600; margin-bottom: 0.25rem;
+}
+.signature-role { color: var(--muted); font-size: 0.9rem; }
+
+.dec { text-align: center; color: var(--goldb); letter-spacing: 0.35em; margin: 2rem 0; }
+
+/* ── ADHERIR (FORM) ─────────────────────────────── */
+.adherir-section {
+  background:
+    radial-gradient(ellipse at top, rgba(244,184,34,0.04) 0%, transparent 60%),
+    var(--paper-warm);
+  padding: 5rem 1.5rem 6rem; margin-top: 3rem;
+  border-top: 4px solid var(--goldb);
+}
+.adherir-inner { max-width: 640px; margin: 0 auto; }
+.adherir-head { text-align: center; margin-bottom: 3rem; }
+.adherir-head h2 {
+  font-family: var(--serif); font-size: 2.25rem; font-style: italic;
+  color: var(--navy); font-weight: 500; margin-bottom: 1rem;
+}
+.adherir-head p { color: var(--muted); font-size: 1rem; max-width: 480px; margin: 0 auto; }
+
+.form {
+  background: white; padding: 2.5rem; border-radius: 6px;
+  border: 1px solid var(--border); box-shadow: 0 8px 30px rgba(15,33,55,0.06);
+}
+.field { margin-bottom: 1.4rem; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 540px) { .field-row { grid-template-columns: 1fr; gap: 0; } .field-row .field { margin-bottom: 1.4rem; } }
+.field label {
+  display: block; font-size: 0.72rem; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--navy-mid); margin-bottom: 0.4rem; font-weight: 600;
+}
+.field input, .field select, .field textarea {
+  width: 100%; padding: 0.75rem 0.9rem; border: 1.5px solid var(--border);
+  background: white; font-family: var(--sans); font-size: 0.95rem;
+  border-radius: 4px; color: var(--ink); transition: all 0.2s;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none; border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(244,184,34,0.12);
+}
+.field textarea { resize: vertical; min-height: 90px; }
+.required { color: var(--gold); }
+
+.checkbox-field { display: flex; gap: 0.7rem; align-items: flex-start; margin-bottom: 1.1rem; cursor: pointer; }
+.checkbox-field input[type="checkbox"] {
+  width: 1.1rem; height: 1.1rem; flex-shrink: 0; margin-top: 0.15rem; cursor: pointer;
+  accent-color: var(--gold);
+}
+.checkbox-field label { font-size: 0.92rem; color: var(--ink-soft); cursor: pointer; line-height: 1.5; }
+.checkbox-field label strong { color: var(--navy); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+  background: var(--navy); color: var(--paper); border: none;
+  padding: 0.9rem 1.6rem; font-family: var(--sans); font-size: 0.95rem;
+  font-weight: 600; letter-spacing: 0.02em; border-radius: 4px;
+  cursor: pointer; transition: all 0.2s; width: 100%;
+}
+.btn:hover { background: var(--navy-mid); box-shadow: 0 4px 12px rgba(15,33,55,0.2); }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn.gold { background: var(--goldb); color: var(--navy); }
+.btn.gold:hover { background: var(--gold); color: white; }
+
+.alert {
+  padding: 1rem 1.2rem; border-radius: 4px; font-size: 0.95rem;
+  margin-bottom: 1.5rem; border-left: 3px solid;
+}
+.alert-error { background: #fef2f2; color: var(--error); border-color: var(--error); }
+.alert-success { background: #ecfdf5; color: var(--success); border-color: var(--success); }
+
+/* ── SUCCESS STATE ─────────────────────────────── */
+.success-state {
+  text-align: center; padding: 3rem 2rem; background: white;
+  border-radius: 6px; border: 1px solid var(--border); display: none;
+}
+.success-icon {
+  width: 80px; height: 80px; border-radius: 50%; background: var(--goldb);
+  margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center;
+  color: var(--navy); font-family: var(--serif); font-size: 2.5rem; font-weight: 600;
+}
+.success-state h2 {
+  font-family: var(--serif); font-size: 2rem; font-style: italic;
+  color: var(--navy); margin-bottom: 1rem;
+}
+.success-state p { color: var(--muted); margin-bottom: 1rem; }
+.success-code {
+  background: var(--paper-warm); padding: 1rem; border-radius: 4px;
+  font-family: monospace; font-size: 1rem; letter-spacing: 0.1em;
+  color: var(--navy); margin: 1.5rem 0;
+}
+
+/* ── FOOTER ─────────────────────────────── */
+.footer {
+  background: var(--navy); color: rgba(200,221,238,0.7);
+  padding: 2.5rem 1.5rem; text-align: center; font-size: 0.85rem;
+}
+.footer a { color: var(--goldb); }
+
+/* ── PROGRESS BAR (lectura) ─────────────────────────────── */
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: var(--goldb); z-index: 200; transition: width 0.1s;
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar" style="width:0%"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg viewBox="0 0 28 28" fill="none">
+        <rect x="0" y="0" width="12" height="12" rx="2.5" fill="#c8ddee"/>
+        <rect x="15" y="0" width="12" height="12" rx="2.5" fill="#c8ddee"/>
+        <rect x="0" y="15" width="12" height="12" rx="2.5" fill="#c8ddee"/>
+        <rect x="15" y="15" width="12" height="12" rx="2.5" fill="#f4b822"/>
+      </svg>
+      <span class="nav-logo-text">El <em>Cuarto</em> Impacto</span>
+    </a>
+    <div class="nav-right">
+      <a href="/" class="back-link" id="nav-back">← Volver</a>
+      <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow" id="eyebrow">El Manifiesto · VF26</div>
+    <h1 id="hero-title">Sumate al <em>Cuarto Impacto</em></h1>
+    <p class="hero-sub" id="hero-sub">Adherí al manifiesto, recibí el PDF oficial y sumate al directorio público de organizaciones y profesionales que asumen la responsabilidad digital como cuarta dimensión del valor.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">14</div>
+        <div class="lbl" id="stat-1-lbl">Principios</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num" id="stat-count">·</div>
+        <div class="lbl" id="stat-2-lbl">Adherentes</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num" id="stat-paises">·</div>
+        <div class="lbl" id="stat-3-lbl">Países</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT (manifiesto) -->
+<div class="container">
+
+  <!-- FOUNDATION -->
+  <section class="section foundation" id="foundation">
+    <span class="section-eyebrow" id="foundation-eyebrow">Fundamento</span>
+    <h2 class="section-title" id="foundation-title">¿Por qué un cuarto impacto?</h2>
+    <div id="foundation-body"></div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section class="section principles">
+    <span class="section-eyebrow" id="principles-eyebrow">Los Catorce Principios</span>
+    <h2 class="section-title" id="principles-title">Una ética para la era de la inteligencia artificial</h2>
+    <div class="dec">◆ ◆ ◆</div>
+    <div id="principles-body"></div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="section closing">
+    <span class="section-eyebrow" id="closing-eyebrow">Declaración Final</span>
+    <h2 class="section-title" id="closing-title">Un llamado a construir empresas que merezcan el futuro que afirman querer.</h2>
+    <div class="text-block" id="closing-body"></div>
+    <div class="dec">◆ ◆ ◆</div>
+    <div class="call-list" id="call-list"></div>
+    <div class="signature">
+      <div class="signature-name">Paula Monte</div>
+      <div class="signature-role" id="sig-1">Empresaria · Speaker · Creadora del Cuarto Impacto</div>
+      <div class="signature-role">PM Consultora Empresarial · elcuartoimpacto.com</div>
+      <div class="signature-role" id="sig-2">Córdoba, Argentina — Mayo 2025</div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ADHERIR -->
+<section class="adherir-section" id="adherir">
+  <div class="adherir-inner">
+    <div class="adherir-head">
+      <h2 id="form-title">Adherí al Manifiesto</h2>
+      <p id="form-sub">Completá tus datos para sumarte al movimiento. Te enviamos el manifiesto oficial en PDF y tu adhesión queda registrada en el directorio público.</p>
+    </div>
+
+    <div id="alert"></div>
+
+    <form class="form" id="adherir-form">
+      <div class="field-row">
+        <div class="field">
+          <label id="lbl-nombre">Nombre <span class="required">*</span></label>
+          <input type="text" name="nombre" required>
+        </div>
+        <div class="field">
+          <label id="lbl-apellido">Apellido <span class="required">*</span></label>
+          <input type="text" name="apellido" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label id="lbl-email">Email <span class="required">*</span></label>
+        <input type="email" name="email" required>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label id="lbl-empresa">Empresa / Organización</label>
+          <input type="text" name="empresa">
+        </div>
+        <div class="field">
+          <label id="lbl-cargo">Cargo</label>
+          <input type="text" name="cargo">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label id="lbl-pais">País</label>
+          <input type="text" name="pais" value="Argentina">
+        </div>
+        <div class="field">
+          <label id="lbl-sitio">Sitio web</label>
+          <input type="url" name="sitio_web" placeholder="https://">
+        </div>
+      </div>
+
+      <div class="field">
+        <label id="lbl-linkedin">LinkedIn</label>
+        <input type="url" name="linkedin_url" placeholder="https://linkedin.com/in/...">
+      </div>
+
+      <div class="field">
+        <label id="lbl-mensaje">Mensaje (opcional)</label>
+        <textarea name="mensaje" id="ph-mensaje" placeholder="¿Por qué adherís al Cuarto Impacto? (opcional, hasta 500 caracteres)" maxlength="500"></textarea>
+      </div>
+
+      <div style="border-top:1px solid var(--border);margin:1.5rem 0;padding-top:1.5rem">
+        <div class="checkbox-field">
+          <input type="checkbox" name="acepta_principios" id="cb-principios" required>
+          <label for="cb-principios" id="lbl-cb-principios"><strong>Adhiero a los 14 principios</strong> del Manifiesto del Cuarto Impacto y me comprometo a integrar la responsabilidad digital como dimensión del valor en mi organización. <span class="required">*</span></label>
+        </div>
+
+        <div class="checkbox-field">
+          <input type="checkbox" name="mostrar_publico" id="cb-publico" checked>
+          <label for="cb-publico" id="lbl-cb-publico"><strong>Quiero aparecer en el directorio público</strong> de adherentes (mi nombre, empresa, cargo, país y mensaje).</label>
+        </div>
+
+        <div class="checkbox-field">
+          <input type="checkbox" name="acepta_comunicaciones" id="cb-comm">
+          <label for="cb-comm" id="lbl-cb-comm">Quiero recibir comunicaciones del movimiento (novedades, eventos, recursos).</label>
+        </div>
+      </div>
+
+      <button type="submit" class="btn" id="btn-submit">
+        <span id="btn-label">Adherir al Manifiesto</span>
+        <span>→</span>
+      </button>
+    </form>
+
+    <div class="success-state" id="success">
+      <div class="success-icon">★</div>
+      <h2 id="success-title">¡Bienvenida/o al movimiento!</h2>
+      <p id="success-p1">Tu adhesión fue registrada con éxito.</p>
+      <div class="success-code" id="success-code">—</div>
+      <p id="success-p2">Te enviamos el manifiesto oficial en PDF a tu email. Si elegiste aparecer públicamente, ya formás parte del directorio.</p>
+      <div style="margin-top:2rem">
+        <a href="/" class="btn gold" style="text-decoration:none;display:inline-flex;width:auto;padding:0.8rem 2rem" id="back-home">Volver al inicio</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <p>El Cuarto Impacto · La responsabilidad digital como cuarta dimensión del valor empresarial</p>
+  <p style="margin-top:0.5rem"><a href="/">elcuartoimpacto.com</a> · <a href="mailto:info@elcuartoimpacto.com">info@elcuartoimpacto.com</a></p>
+</footer>
+
+<script src="/js/manifiesto-data.js"></script>
+<script>
+// ─────────────────────────────────────────────────
+// Lang state + URL param
+// ─────────────────────────────────────────────────
+var currentLang = 'es';
+var urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('lang') === 'en') currentLang = 'en';
+
+function toggleLang() {
+  currentLang = currentLang === 'es' ? 'en' : 'es';
+  apply();
+  var url = new URL(window.location);
+  url.searchParams.set('lang', currentLang);
+  history.replaceState({}, '', url);
+}
+
+// ─────────────────────────────────────────────────
+// Apply translations + render manifesto
+// ─────────────────────────────────────────────────
+var UI = {
+  es: {
+    eyebrow: 'El Manifiesto · VF26',
+    heroTitle: 'Sumate al <em>Cuarto Impacto</em>',
+    heroSub: 'Adherí al manifiesto, recibí el PDF oficial y sumate al directorio público de organizaciones y profesionales que asumen la responsabilidad digital como cuarta dimensión del valor.',
+    stat1: 'Principios', stat2: 'Adherentes', stat3: 'Países',
+    foundationEyebrow: 'Fundamento', foundationTitle: '¿Por qué un cuarto impacto?',
+    principlesEyebrow: 'Los Catorce Principios', principlesTitle: 'Una ética para la era de la inteligencia artificial',
+    closingEyebrow: 'Declaración Final', closingTitle: 'Un llamado a construir empresas que merezcan el futuro que afirman querer.',
+    sigRole: 'Empresaria · Speaker · Creadora del Cuarto Impacto',
+    sigLoc: 'Córdoba, Argentina — Mayo 2025',
+    formTitle: 'Adherí al Manifiesto',
+    formSub: 'Completá tus datos para sumarte al movimiento. Te enviamos el manifiesto oficial en PDF y tu adhesión queda registrada en el directorio público.',
+    lblNombre: 'Nombre', lblApellido: 'Apellido', lblEmail: 'Email',
+    lblEmpresa: 'Empresa / Organización', lblCargo: 'Cargo',
+    lblPais: 'País', lblSitio: 'Sitio web', lblLinkedin: 'LinkedIn',
+    lblMensaje: 'Mensaje (opcional)',
+    phMensaje: '¿Por qué adherís al Cuarto Impacto? (opcional, hasta 500 caracteres)',
+    cbPrincipios: '<strong>Adhiero a los 14 principios</strong> del Manifiesto del Cuarto Impacto y me comprometo a integrar la responsabilidad digital como dimensión del valor en mi organización.',
+    cbPublico: '<strong>Quiero aparecer en el directorio público</strong> de adherentes (mi nombre, empresa, cargo, país y mensaje).',
+    cbComm: 'Quiero recibir comunicaciones del movimiento (novedades, eventos, recursos).',
+    btnLabel: 'Adherir al Manifiesto',
+    sendingLabel: 'Enviando…',
+    successTitle: '¡Bienvenida/o al movimiento!',
+    successP1: 'Tu adhesión fue registrada con éxito.',
+    successP2: 'Te enviamos el manifiesto oficial en PDF a tu email. Si elegiste aparecer públicamente, ya formás parte del directorio.',
+    backHome: 'Volver al inicio',
+    navBack: '← Volver',
+    errorRequired: 'Tenés que aceptar los principios para adherir.',
+    errorGeneric: 'No pudimos registrar tu adhesión: ',
+  },
+  en: {
+    eyebrow: 'The Manifesto · VF26',
+    heroTitle: 'Join <em>The Fourth Impact</em>',
+    heroSub: 'Sign the manifesto, receive the official PDF, and join the public directory of organizations and professionals who embrace digital responsibility as the fourth dimension of value.',
+    stat1: 'Principles', stat2: 'Signatories', stat3: 'Countries',
+    foundationEyebrow: 'Foundation', foundationTitle: 'Why a fourth impact?',
+    principlesEyebrow: 'The Fourteen Principles', principlesTitle: 'An ethics for the age of artificial intelligence',
+    closingEyebrow: 'Final Declaration', closingTitle: 'A call to build organizations that deserve the future they claim to want.',
+    sigRole: 'Entrepreneur · Speaker · Creator of The Fourth Impact',
+    sigLoc: 'Córdoba, Argentina — May 2025',
+    formTitle: 'Sign the Manifesto',
+    formSub: 'Fill in your information to join the movement. We send you the official manifesto PDF and register your adhesion in the public directory.',
+    lblNombre: 'First name', lblApellido: 'Last name', lblEmail: 'Email',
+    lblEmpresa: 'Organization', lblCargo: 'Role',
+    lblPais: 'Country', lblSitio: 'Website', lblLinkedin: 'LinkedIn',
+    lblMensaje: 'Message (optional)',
+    phMensaje: 'Why do you join the Fourth Impact? (optional, up to 500 characters)',
+    cbPrincipios: '<strong>I subscribe to the 14 principles</strong> of the Fourth Impact Manifesto and commit to integrate digital responsibility as a dimension of value in my organization.',
+    cbPublico: '<strong>I want to appear in the public directory</strong> of signatories (my name, organization, role, country, and message).',
+    cbComm: 'I want to receive movement communications (news, events, resources).',
+    btnLabel: 'Sign the Manifesto',
+    sendingLabel: 'Sending…',
+    successTitle: 'Welcome to the movement!',
+    successP1: 'Your adhesion was successfully registered.',
+    successP2: 'We sent the official manifesto PDF to your email. If you chose to appear publicly, you are now part of the directory.',
+    backHome: 'Back to home',
+    navBack: '← Back',
+    errorRequired: 'You must accept the principles to sign.',
+    errorGeneric: 'Could not register your adhesion: ',
+  }
+};
+
+function apply() {
+  var L = currentLang;
+  var t = UI[L];
+  var d = window.MANIFIESTO_DATA[L];
+  document.documentElement.lang = L;
+  document.getElementById('lang-btn').textContent = L === 'es' ? 'EN' : 'ES';
+
+  // Hero
+  document.getElementById('eyebrow').textContent = t.eyebrow;
+  document.getElementById('hero-title').innerHTML = t.heroTitle;
+  document.getElementById('hero-sub').textContent = t.heroSub;
+  document.getElementById('stat-1-lbl').textContent = t.stat1;
+  document.getElementById('stat-2-lbl').textContent = t.stat2;
+  document.getElementById('stat-3-lbl').textContent = t.stat3;
+  document.getElementById('nav-back').textContent = t.navBack;
+
+  // Sections
+  document.getElementById('foundation-eyebrow').textContent = t.foundationEyebrow;
+  document.getElementById('foundation-title').textContent = t.foundationTitle;
+  document.getElementById('principles-eyebrow').textContent = t.principlesEyebrow;
+  document.getElementById('principles-title').textContent = t.principlesTitle;
+  document.getElementById('closing-eyebrow').textContent = t.closingEyebrow;
+  document.getElementById('closing-title').textContent = t.closingTitle;
+  document.getElementById('sig-1').textContent = t.sigRole;
+  document.getElementById('sig-2').textContent = t.sigLoc;
+
+  // Form
+  document.getElementById('form-title').textContent = t.formTitle;
+  document.getElementById('form-sub').textContent = t.formSub;
+  document.getElementById('lbl-nombre').innerHTML = t.lblNombre + ' <span class="required">*</span>';
+  document.getElementById('lbl-apellido').innerHTML = t.lblApellido + ' <span class="required">*</span>';
+  document.getElementById('lbl-email').innerHTML = t.lblEmail + ' <span class="required">*</span>';
+  document.getElementById('lbl-empresa').textContent = t.lblEmpresa;
+  document.getElementById('lbl-cargo').textContent = t.lblCargo;
+  document.getElementById('lbl-pais').textContent = t.lblPais;
+  document.getElementById('lbl-sitio').textContent = t.lblSitio;
+  document.getElementById('lbl-linkedin').textContent = t.lblLinkedin;
+  document.getElementById('lbl-mensaje').textContent = t.lblMensaje;
+  document.getElementById('ph-mensaje').placeholder = t.phMensaje;
+  document.getElementById('lbl-cb-principios').innerHTML = t.cbPrincipios + ' <span class="required">*</span>';
+  document.getElementById('lbl-cb-publico').innerHTML = t.cbPublico;
+  document.getElementById('lbl-cb-comm').textContent = t.cbComm;
+  document.getElementById('btn-label').textContent = t.btnLabel;
+  document.getElementById('success-title').textContent = t.successTitle;
+  document.getElementById('success-p1').textContent = t.successP1;
+  document.getElementById('success-p2').textContent = t.successP2;
+  document.getElementById('back-home').textContent = t.backHome;
+
+  // Foundation
+  var fnd = document.getElementById('foundation-body');
+  fnd.innerHTML = '';
+  d.foundationParas.forEach(function(p){ fnd.innerHTML += '<p>'+p+'</p>'; });
+  fnd.innerHTML += '<div class="pull">'+d.foundationLead+'</div>';
+  fnd.innerHTML += '<p>'+d.foundationClose+'</p>';
+
+  // Principles
+  var pri = document.getElementById('principles-body');
+  pri.innerHTML = '';
+  d.principles.forEach(function(p){
+    var bodyHtml = p.body.map(function(b){ return '<p>'+b+'</p>'; }).join('');
+    pri.innerHTML += ''+
+      '<div class="principle">'+
+        '<div class="principle-num">'+p.n+'</div>'+
+        '<div class="principle-title">'+p.title+'</div>'+
+        '<div class="principle-body">'+bodyHtml+'</div>'+
+        '<div class="pull">'+p.pull+'</div>'+
+      '</div>';
+  });
+
+  // Closing
+  var cls = document.getElementById('closing-body');
+  cls.innerHTML = '';
+  d.closingParas.forEach(function(p){ cls.innerHTML += '<p>'+p+'</p>'; });
+
+  var cl = document.getElementById('call-list');
+  cl.innerHTML = '';
+  d.callLines.forEach(function(l){ cl.innerHTML += '<div class="call">'+l+'</div>'; });
+  d.callLines2.forEach(function(l){ cl.innerHTML += '<div class="call gold">'+l+'</div>'; });
+}
+
+// ─────────────────────────────────────────────────
+// Backend URL
+// ─────────────────────────────────────────────────
+var BACKEND = (function(){
+  var h = window.location.hostname;
+  if (h === 'localhost' || h === '127.0.0.1') return 'http://localhost:3100';
+  return '';
+})();
+
+// ─────────────────────────────────────────────────
+// Load stats
+// ─────────────────────────────────────────────────
+fetch(BACKEND + '/api/adhesiones/stats')
+  .then(function(r){ return r.json(); })
+  .then(function(o){
+    if (o.data) {
+      document.getElementById('stat-count').textContent = o.data.total || 0;
+      document.getElementById('stat-paises').textContent = o.data.paises_count || 0;
+    }
+  })
+  .catch(function(){});
+
+// ─────────────────────────────────────────────────
+// Form submit
+// ─────────────────────────────────────────────────
+document.getElementById('adherir-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  var t = UI[currentLang];
+  var alertEl = document.getElementById('alert');
+  alertEl.innerHTML = '';
+
+  var fd = new FormData(e.target);
+  var body = {};
+  fd.forEach(function(v, k){ body[k] = v; });
+  body.idioma = currentLang;
+  body.acepta_principios = !!fd.get('acepta_principios');
+  body.acepta_comunicaciones = !!fd.get('acepta_comunicaciones');
+  body.mostrar_publico = !!fd.get('mostrar_publico');
+
+  if (!body.acepta_principios) {
+    alertEl.innerHTML = '<div class="alert alert-error">'+t.errorRequired+'</div>';
+    return;
+  }
+
+  var btn = document.getElementById('btn-submit');
+  var lbl = document.getElementById('btn-label');
+  var originalLbl = lbl.textContent;
+  lbl.textContent = t.sendingLabel;
+  btn.disabled = true;
+
+  fetch(BACKEND + '/api/adhesiones', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  })
+  .then(function(r){ return r.json().then(function(b){ return {ok:r.ok, body:b}; }); })
+  .then(function(out){
+    if (!out.ok) throw new Error(out.body.error || 'error');
+    document.getElementById('adherir-form').style.display = 'none';
+    document.getElementById('success-code').textContent = out.body.data.codigo_adhesion;
+    document.getElementById('success').style.display = 'block';
+    document.getElementById('success').scrollIntoView({ behavior: 'smooth' });
+  })
+  .catch(function(err){
+    lbl.textContent = originalLbl;
+    btn.disabled = false;
+    alertEl.innerHTML = '<div class="alert alert-error">'+t.errorGeneric + err.message+'</div>';
+  });
+});
+
+// ─────────────────────────────────────────────────
+// Progress bar (reading progress)
+// ─────────────────────────────────────────────────
+window.addEventListener('scroll', function(){
+  var h = document.documentElement;
+  var pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+});
+
+// Init
+apply();
+</script>
+
+</body>
+</html>
