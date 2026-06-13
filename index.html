@@ -841,8 +841,8 @@ footer{background:var(--navy-deep);padding:4rem 3rem}
         <form name="contacto" id="contactForm" onsubmit="return sendContactEmail(event)">
           <div class="fg"><label class="fl" id="form-nombre">Nombre</label><input class="fi" type="text" name="nombre" placeholder="Tu nombre completo" required></div>
           <div class="fg"><label class="fl" id="form-empresa">Empresa</label><input class="fi" type="text" name="empresa" placeholder="Tu empresa u organización"></div>
-          <div class="fg"><label class="fl">Email</label><input class="fi" type="email" name="email" placeholder="tu@email.com" required></div>
-          <div class="fg"><label class="fl">Mensaje</label><textarea class="fi" name="mensaje" placeholder="Contame en qué te puedo ayudar o qué te trajo hasta acá..." required></textarea></div>
+          <div class="fg"><label class="fl" data-i18n="form-email-label">Email</label><input class="fi" type="email" name="email" placeholder="tu@email.com" required></div>
+          <div class="fg"><label class="fl" id="form-mensaje">Mensaje</label><textarea class="fi" name="mensaje" placeholder="Contame en qué te puedo ayudar o qué te trajo hasta acá..." required></textarea></div>
           <button class="fsub" type="submit" id="form-submit">Enviar mensaje</button>
         </form>
       </div>
@@ -1075,6 +1075,7 @@ var translations = {
   'form-nombre': {es:'Nombre', en:'Name'},
   'form-empresa': {es:'Empresa', en:'Company'},
   'form-mensaje': {es:'Mensaje', en:'Message'},
+  'form-email-label': {es:'Email', en:'Email'},
   'form-ph-nombre': {es:'Tu nombre completo', en:'Your full name'},
   'form-ph-empresa': {es:'Tu empresa u organización', en:'Your company or organization'},
   'form-ph-email': {es:'tu@email.com', en:'your@email.com'},
@@ -1131,42 +1132,64 @@ function goDiagnostico(e) {
   window.location.href = '/diagnostico.html?lang=' + currentLang;
 }
 
-// Contact form → opens the visitor's email client pre-filled (no backend needed)
+// Backend URL — localhost en dev, mismo dominio en prod
+var CONTACT_BACKEND = (function(){
+  var h = window.location.hostname;
+  if (h === 'localhost' || h === '127.0.0.1') return 'http://localhost:3100';
+  return '';
+})();
+
+// Contact form → POST al backend (guarda en BD + envía email a admin + confirmación al usuario)
 function sendContactEmail(e) {
   e.preventDefault();
   var f = document.getElementById('contactForm');
   var nombre = f.nombre.value.trim();
   var empresa = f.empresa.value.trim();
-  var email = f.email.value.trim();
+  var emailAddr = f.email.value.trim();
   var mensaje = f.mensaje.value.trim();
   var L = currentLang;
 
-  var subject = (L === 'es')
-    ? 'Contacto web — ' + (nombre || 'Sin nombre')
-    : 'Website contact — ' + (nombre || 'No name');
-
-  var bodyLines = [
-    (L === 'es' ? 'Nombre: ' : 'Name: ') + nombre,
-    (L === 'es' ? 'Empresa: ' : 'Company: ') + empresa,
-    (L === 'es' ? 'Email: ' : 'Email: ') + email,
-    '',
-    (L === 'es' ? 'Mensaje:' : 'Message:'),
-    mensaje
-  ];
-  var body = bodyLines.join('\n');
-
-  var mailto = 'mailto:info@elcuartoimpacto.com'
-    + '?subject=' + encodeURIComponent(subject)
-    + '&body=' + encodeURIComponent(body);
-
-  window.location.href = mailto;
+  if (!nombre || !emailAddr || !mensaje) return false;
 
   var btn = document.getElementById('form-submit');
   var original = btn.textContent;
-  btn.textContent = (L === 'es')
-    ? 'Abriendo tu correo…'
-    : 'Opening your email…';
-  setTimeout(function(){ btn.textContent = original; }, 4000);
+  btn.disabled = true;
+  btn.textContent = (L === 'es') ? 'Enviando…' : 'Sending…';
+
+  fetch(CONTACT_BACKEND + '/api/contactos', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      nombre: nombre, email: emailAddr, empresa: empresa, mensaje: mensaje,
+      idioma: L, origen: 'web-home',
+    }),
+  })
+  .then(function(r){ return r.json().then(function(b){ return {ok:r.ok, body:b}; }); })
+  .then(function(out){
+    if (!out.ok) throw new Error(out.body.error || 'error');
+    // Reemplazar form por mensaje de éxito
+    var form = document.getElementById('contactForm');
+    form.innerHTML = '<div style="text-align:center;padding:2rem 1rem;background:rgba(244,184,34,0.08);border-left:3px solid var(--gold);border-radius:4px">' +
+      '<div style="font-family:var(--serif);font-size:1.75rem;color:var(--navy);margin-bottom:0.75rem;font-style:italic">✓ ' + (L==='es'?'¡Gracias!':'Thank you!') + '</div>' +
+      '<p style="color:var(--ink);font-size:1rem;line-height:1.55;margin-bottom:0.5rem">' +
+        (L==='es'
+          ? 'Recibimos tu mensaje. Te respondemos en las próximas 24-48 horas hábiles.'
+          : 'We received your message. We will reply within the next 24-48 business hours.') +
+      '</p>' +
+      '<p style="color:var(--muted);font-size:0.85rem">' +
+        (L==='es'
+          ? 'Te enviamos una confirmación a ' + emailAddr
+          : 'A confirmation was sent to ' + emailAddr) +
+      '</p>' +
+    '</div>';
+  })
+  .catch(function(err){
+    btn.disabled = false;
+    btn.textContent = original;
+    alert((L === 'es'
+      ? 'No pudimos enviar tu mensaje: '
+      : 'Could not send your message: ') + err.message);
+  });
 
   return false;
 }
