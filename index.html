@@ -364,6 +364,42 @@ h2.st.white em{color:var(--celeste)}
 .lay.gold .lay-label{color:var(--gold-dark)}
 .lay-t{font-family:var(--serif);font-size:1.02rem;font-weight:400;font-style:italic;color:var(--ink);margin-bottom:.6rem;line-height:1.35}
 .lay-d{font-size:.8rem;font-weight:300;line-height:1.65;color:var(--ink-light)}
+/* ── ÚLTIMOS ADHERENTES ────────────────────────────── */
+.adh-block{margin:5rem 0 4rem;padding:3rem 0;border-top:1px solid rgba(244,184,34,.18);border-bottom:1px solid rgba(244,184,34,.18)}
+.adh-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;margin-bottom:2.5rem}
+.adh-head-left{flex:1;min-width:260px}
+.adh-eyebrow{font-size:.62rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.adh-title{font-family:var(--serif);font-size:1.85rem;font-weight:500;color:var(--ink);line-height:1.15;letter-spacing:-.015em}
+.adh-title em{font-style:italic;color:var(--navy-mid)}
+.adh-stats{display:flex;gap:1.5rem}
+.adh-stat{text-align:right}
+.adh-stat-num{font-family:var(--serif);font-style:italic;font-size:2.2rem;color:var(--gold);line-height:1;font-weight:600}
+.adh-stat-lbl{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);margin-top:.3rem;font-weight:600}
+.adh-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.adh-card{background:rgba(255,255,255,.5);border:1px solid rgba(15,33,55,.08);border-radius:6px;padding:1.1rem 1.2rem;transition:all .25s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.adh-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(15,33,55,.06);border-color:rgba(244,184,34,.35)}
+.adh-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--gold);transition:height .25s}
+.adh-card:hover::before{height:100%}
+.adh-name{font-family:var(--serif);font-size:1.08rem;font-weight:600;color:var(--navy);line-height:1.2;margin-bottom:.15rem}
+.adh-role{font-size:.78rem;color:var(--ink-faint);margin-bottom:.5rem;line-height:1.35}
+.adh-emp{font-size:.85rem;font-weight:500;color:var(--ink);padding-top:.5rem;border-top:1px solid rgba(15,33,55,.08)}
+.adh-pais{font-size:.68rem;color:var(--gold);letter-spacing:.05em;text-transform:uppercase;font-weight:600;margin-top:.4rem}
+.adh-pais::before{content:'◆ ';color:rgba(244,184,34,.5);font-size:.55rem}
+.adh-empty{text-align:center;padding:2.5rem 1.5rem;background:rgba(244,184,34,.05);border:1px dashed rgba(244,184,34,.35);border-radius:6px}
+.adh-empty-title{font-family:var(--serif);font-size:1.4rem;font-style:italic;color:var(--navy);margin-bottom:.5rem}
+.adh-empty-sub{font-size:.92rem;color:var(--ink-mid);margin-bottom:1.25rem}
+.adh-empty .btn-gold{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--white);padding:.7rem 1.4rem;border-radius:3px;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+.adh-cta-row{margin-top:2.5rem;text-align:center}
+.adh-cta-btn{display:inline-flex;align-items:center;gap:.5rem;color:var(--navy);font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:.3rem;transition:all .2s}
+.adh-cta-btn:hover{color:var(--gold)}
+@media (max-width:600px){
+  .adh-head{flex-direction:column;align-items:flex-start}
+  .adh-stats{margin-top:1rem}
+  .adh-stat{text-align:left}
+  .adh-grid{grid-template-columns:1fr}
+  .adh-title{font-size:1.5rem}
+}
+
 .newsletter{
   padding:3rem;background:var(--white);border:1px solid var(--rule);
   display:flex;gap:3rem;align-items:center;flex-wrap:wrap;
@@ -796,6 +832,37 @@ footer{background:var(--navy-deep);padding:4rem 3rem}
         <p class="lay-d" data-i18n="lay-3-d">El nivel más alto. Empresas que implementaron los principios y se convierten en referencia para LATAM.</p>
       </div>
     </div>
+    <!-- ÚLTIMOS ADHERENTES -->
+    <div class="adh-block r" id="adh-block">
+      <div class="adh-head">
+        <div class="adh-head-left">
+          <div class="adh-eyebrow" data-i18n="adh-eyebrow">Adherentes recientes</div>
+          <h3 class="adh-title" data-i18n="adh-title">Quienes ya son parte<br>del <em>movimiento</em></h3>
+        </div>
+        <div class="adh-stats" id="adh-stats">
+          <div class="adh-stat">
+            <div class="adh-stat-num" id="adh-stat-total">·</div>
+            <div class="adh-stat-lbl" data-i18n="adh-stat-1">Adherentes</div>
+          </div>
+          <div class="adh-stat">
+            <div class="adh-stat-num" id="adh-stat-paises">·</div>
+            <div class="adh-stat-lbl" data-i18n="adh-stat-2">Países</div>
+          </div>
+        </div>
+      </div>
+      <div id="adh-content">
+        <div class="adh-empty" style="opacity:.6">
+          <div class="adh-empty-sub" data-i18n="adh-loading">Cargando…</div>
+        </div>
+      </div>
+      <div class="adh-cta-row">
+        <a href="/adherentes.html" class="adh-cta-btn" data-i18n="adh-cta-ver-todos">
+          Ver directorio completo
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
     <div class="newsletter r">
       <div class="nl-text">
         <h3 data-i18n="nl-h">Sumate al movimiento</h3>
@@ -1036,6 +1103,18 @@ var translations = {
   'nl-h': {es:'Sumate al movimiento', en:'Join the movement'},
   'nl-p': {es:'Recibí el manifiesto completo, novedades y acceso a los primeros eventos del Cuarto Impacto.', en:'Receive the complete manifesto, news, and access to the first Fourth Impact events.'},
   'nl-btn': {es:'Quiero sumarme', en:'I want to join'},
+
+  // ── ÚLTIMOS ADHERENTES ──
+  'adh-eyebrow': {es:'Adherentes recientes', en:'Recent signatories'},
+  'adh-title': {es:'Quienes ya son parte<br>del <em>movimiento</em>', en:'Who is already part<br>of the <em>movement</em>'},
+  'adh-stat-1': {es:'Adherentes', en:'Signatories'},
+  'adh-stat-2': {es:'Países', en:'Countries'},
+  'adh-loading': {es:'Cargando…', en:'Loading…'},
+  'adh-empty-title': {es:'Sé el primero', en:'Be the first'},
+  'adh-empty-sub': {es:'Aún no hay adhesiones públicas. Iniciá el movimiento adhiriendo al Manifiesto del Cuarto Impacto.', en:'No public signatories yet. Start the movement by signing the Fourth Impact Manifesto.'},
+  'adh-empty-btn': {es:'Adherir al Manifiesto', en:'Sign the Manifesto'},
+  'adh-cta-ver-todos': {es:'Ver directorio completo', en:'View full directory'},
+  'adh-error': {es:'No pudimos cargar el directorio.', en:'Could not load the directory.'},
   'manif-cta': {es:'Sumarme al movimiento →', en:'Join the movement →'},
 
   // Declaration
@@ -1230,6 +1309,89 @@ function rebuildPrinciples(L) {
   document.querySelectorAll('#principles-grid .r').forEach(function(el) {
     ro.observe(el);
   });
+}
+
+// ─── Últimos adherentes: carga lazy desde el backend ─────────────────────────
+var ADH_BACKEND = (function(){
+  var h = window.location.hostname;
+  if (h === 'localhost' || h === '127.0.0.1') return 'http://localhost:3100';
+  return '';
+})();
+
+function escapeHTML(s) {
+  if (!s) return '';
+  return String(s).replace(/[&<>"']/g, function(c){
+    return ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[c];
+  });
+}
+
+function renderAdherentes(adherentes, stats) {
+  var L = currentLang || 'es';
+  var t = translations;
+  document.getElementById('adh-stat-total').textContent = (stats && stats.total) || adherentes.length || 0;
+  document.getElementById('adh-stat-paises').textContent = (stats && stats.paises_count) || 0;
+
+  var cont = document.getElementById('adh-content');
+
+  if (!adherentes.length) {
+    cont.innerHTML =
+      '<div class="adh-empty">' +
+        '<div class="adh-empty-title">' + t['adh-empty-title'][L] + '</div>' +
+        '<div class="adh-empty-sub">' + t['adh-empty-sub'][L] + '</div>' +
+        '<a href="/adherir.html?lang=' + L + '" class="btn-gold">' + t['adh-empty-btn'][L] + ' →</a>' +
+      '</div>';
+    return;
+  }
+
+  // Mostrar hasta 8 adherentes en home, los más recientes
+  var recent = adherentes.slice(0, 8);
+  cont.innerHTML = '<div class="adh-grid">' + recent.map(function(a){
+    var fullName = escapeHTML(a.nombre + ' ' + a.apellido);
+    var cargo = a.cargo ? '<div class="adh-role">' + escapeHTML(a.cargo) + '</div>' : '';
+    var emp = a.empresa ? '<div class="adh-emp">' + escapeHTML(a.empresa) + '</div>' : '';
+    return '<div class="adh-card">' +
+        '<div class="adh-name">' + fullName + '</div>' +
+        cargo +
+        emp +
+        '<div class="adh-pais">' + escapeHTML(a.pais) + '</div>' +
+      '</div>';
+  }).join('') + '</div>';
+}
+
+function loadAdherentes() {
+  Promise.all([
+    fetch(ADH_BACKEND + '/api/adhesiones').then(function(r){ return r.json(); }),
+    fetch(ADH_BACKEND + '/api/adhesiones/stats').then(function(r){ return r.json(); }),
+  ]).then(function(res){
+    renderAdherentes(res[0].data || [], res[1].data || {});
+  }).catch(function(){
+    var L = currentLang || 'es';
+    document.getElementById('adh-content').innerHTML =
+      '<div class="adh-empty">' +
+        '<div class="adh-empty-sub" style="margin-bottom:1rem">' + translations['adh-error'][L] + '</div>' +
+        '<a href="/adherir.html?lang=' + L + '" class="btn-gold">' + translations['adh-empty-btn'][L] + ' →</a>' +
+      '</div>';
+  });
+}
+
+// Carga cuando el bloque entra en viewport (no penaliza first paint)
+if ('IntersectionObserver' in window) {
+  var adhBlock = document.getElementById('adh-block');
+  if (adhBlock) {
+    var loaded = false;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting && !loaded) {
+          loaded = true;
+          loadAdherentes();
+          io.disconnect();
+        }
+      });
+    }, { rootMargin: '200px' });
+    io.observe(adhBlock);
+  }
+} else {
+  loadAdherentes();
 }
 </script>
 
