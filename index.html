@@ -411,29 +411,38 @@ h2.st.white em{color:var(--celeste)}
   .adh-title{font-size:1.5rem}
 }
 
-.newsletter{
+.community-cta{
   padding:3rem;background:var(--white);border:1px solid var(--rule);
-  display:flex;gap:3rem;align-items:center;flex-wrap:wrap;
   position:relative;overflow:hidden;
+  display:grid;gap:2rem;align-items:center;
+  grid-template-columns:auto 1fr auto;
 }
-.newsletter::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
-.nl-text{flex:1;min-width:220px}
-.nl-text h3{font-family:var(--serif);font-size:1.45rem;font-weight:300;font-style:italic;color:var(--ink);margin-bottom:.4rem}
-.nl-text p{font-size:.83rem;font-weight:300;color:var(--ink-light);line-height:1.6}
-.nl-form{display:flex;flex:1;min-width:280px}
-.nl-form input{
-  flex:1;font-family:var(--sans);font-size:.84rem;font-weight:300;
-  color:var(--ink);background:var(--paper);border:1px solid var(--rule);
-  border-right:none;padding:.9rem 1.2rem;outline:none;transition:border-color .2s;
+.community-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.cc-stats{display:flex;gap:2rem;padding-right:2rem;border-right:1px solid var(--rule)}
+.cc-stat{text-align:center;min-width:65px}
+.cc-num{font-family:var(--serif);font-size:2.3rem;font-weight:500;font-style:italic;color:var(--gold);line-height:1}
+.cc-lbl{font-size:.62rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-top:.4rem}
+.cc-text h3{font-family:var(--serif);font-size:1.5rem;font-weight:300;font-style:italic;color:var(--ink);margin-bottom:.5rem}
+.cc-text p{font-size:.84rem;font-weight:300;color:var(--ink-light);line-height:1.6;max-width:440px}
+.cc-btns{display:flex;flex-direction:column;gap:.7rem;min-width:230px}
+.cc-btns .btn-gold,.cc-btns .btn-outline{
+  font-family:var(--sans);font-size:.64rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;
+  padding:.85rem 1.4rem;text-decoration:none;text-align:center;transition:all .2s;display:inline-block;
 }
-.nl-form input:focus{border-color:var(--gold)}
-.nl-form input::placeholder{color:var(--ink-faint)}
-.nl-form button{
-  font-family:var(--sans);font-size:.66rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--navy-deep);background:var(--gold);border:none;
-  padding:.9rem 1.5rem;cursor:pointer;transition:background .2s;white-space:nowrap;
+.cc-btns .btn-gold{background:var(--gold);color:var(--navy-deep);border:1px solid var(--gold)}
+.cc-btns .btn-gold:hover{background:var(--gold-light);border-color:var(--gold-light)}
+.cc-btns .btn-outline{background:transparent;color:var(--ink);border:1px solid var(--rule)}
+.cc-btns .btn-outline:hover{border-color:var(--navy-mid);color:var(--navy-mid)}
+@media (max-width:900px){
+  .community-cta{grid-template-columns:1fr}
+  .cc-stats{justify-content:center;padding-right:0;border-right:none;padding-bottom:1.5rem;border-bottom:1px solid var(--rule)}
+  .cc-text{text-align:center}
+  .cc-text p{margin:0 auto}
+  .cc-btns{flex-direction:row;justify-content:center}
 }
-.nl-form button:hover{background:var(--gold-light)}
+@media (max-width:560px){
+  .cc-btns{flex-direction:column}
+}
 
 /* ── CONTACTO ── */
 .contacto{background:var(--white)}
@@ -874,14 +883,28 @@ footer{background:var(--navy-deep);padding:4rem 3rem}
       </div>
     </div>
 
-    <div class="newsletter r">
-      <div class="nl-text">
-        <h3 data-i18n="nl-h">Sumate al movimiento</h3>
-        <p data-i18n="nl-p">Recibí el manifiesto completo, novedades y acceso a los primeros eventos del Cuarto Impacto.</p>
+    <div class="community-cta r">
+      <div class="cc-stats">
+        <div class="cc-stat">
+          <div class="cc-num" id="cc-stat-total">·</div>
+          <div class="cc-lbl" data-i18n="cc-stat-adherentes">Adherentes</div>
+        </div>
+        <div class="cc-stat">
+          <div class="cc-num" id="cc-stat-paises">·</div>
+          <div class="cc-lbl" data-i18n="cc-stat-paises">Países</div>
+        </div>
+        <div class="cc-stat">
+          <div class="cc-num">14</div>
+          <div class="cc-lbl" data-i18n="cc-stat-principios">Principios</div>
+        </div>
       </div>
-      <div class="nl-form">
-        <input type="email" placeholder="tu@email.com">
-        <button type="button" data-i18n="nl-btn">Quiero sumarme</button>
+      <div class="cc-text">
+        <h3 data-i18n="cc-h">Sé parte del movimiento</h3>
+        <p data-i18n="cc-p">Adherí al manifiesto y conocé a las empresas y profesionales que están construyendo una era empresarial más responsable.</p>
+      </div>
+      <div class="cc-btns">
+        <a href="/adherir.html" class="btn-gold" data-i18n="cc-btn-adherir">Adherir al manifiesto →</a>
+        <a href="/adherentes.html" class="btn-outline" data-i18n="cc-btn-directorio">Ver directorio público</a>
       </div>
     </div>
   </div>
@@ -1114,6 +1137,13 @@ var translations = {
   'nl-h': {es:'Sumate al movimiento', en:'Join the movement'},
   'nl-p': {es:'Recibí el manifiesto completo, novedades y acceso a los primeros eventos del Cuarto Impacto.', en:'Receive the complete manifesto, news, and access to the first Fourth Impact events.'},
   'nl-btn': {es:'Quiero sumarme', en:'I want to join'},
+  'cc-stat-adherentes': {es:'Adherentes', en:'Signatories'},
+  'cc-stat-paises': {es:'Países', en:'Countries'},
+  'cc-stat-principios': {es:'Principios', en:'Principles'},
+  'cc-h': {es:'Sé parte del movimiento', en:'Be part of the movement'},
+  'cc-p': {es:'Adherí al manifiesto y conocé a las empresas y profesionales que están construyendo una era empresarial más responsable.', en:'Sign the manifesto and meet the organizations and professionals building a more responsible business era.'},
+  'cc-btn-adherir': {es:'Adherir al manifiesto →', en:'Sign the manifesto →'},
+  'cc-btn-directorio': {es:'Ver directorio público', en:'See public directory'},
 
   // ── ÚLTIMOS ADHERENTES ──
   'adh-eyebrow': {es:'Adherentes recientes', en:'Recent signatories'},
@@ -1215,6 +1245,22 @@ function toggleLang() {
   document.documentElement.lang = currentLang;
   applyLang();
 }
+
+// Stats de la comunidad (Adherentes + Países) — bloque CTA
+(function loadCommunityStats() {
+  var host = window.location.hostname;
+  var BACKEND = (host === 'localhost' || host === '127.0.0.1') ? 'http://localhost:3100' : '';
+  fetch(BACKEND + '/api/adhesiones/stats')
+    .then(function(r){ return r.json(); })
+    .then(function(o){
+      if (!o || !o.data) return;
+      var t = document.getElementById('cc-stat-total');
+      var p = document.getElementById('cc-stat-paises');
+      if (t) t.textContent = o.data.total || 0;
+      if (p) p.textContent = o.data.paises_count || 0;
+    })
+    .catch(function(){});
+})();
 
 // Carry current language to the diagnostic page
 function goDiagnostico(e) {
