@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Recursos · El Cuarto Impacto</title>
+<meta name="description" content="Biblioteca pública del Cuarto Impacto: manifiesto, framework, guías, plantillas y casos de uso para la integración responsable de IA en empresas.">
+<meta property="og:title" content="Recursos · El Cuarto Impacto">
+<meta property="og:description" content="Biblioteca pública: manifiesto, framework, guías y plantillas para la integración responsable de IA en empresas.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://elcuartoimpacto.com/recursos.html">
+<meta property="og:image" content="https://elcuartoimpacto.com/og-adherentes.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'><rect x='0' y='0' width='12' height='12' rx='2.5' fill='%231e3a5f'/><rect x='15' y='0' width='12' height='12' rx='2.5' fill='%231e3a5f'/><rect x='0' y='15' width='12' height='12' rx='2.5' fill='%231e3a5f'/><rect x='15' y='15' width='12' height='12' rx='2.5' fill='%23f4b822'/></svg>">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600;700&display=swap');
+:root {
+  --navy:#0f2137; --navy-mid:#1e3a5f; --gold:#c8920a; --goldb:#f4b822;
+  --paper:#faf8f3; --paper-warm:#f4eedf; --celeste-bg:#eef5fc;
+  --ink:#141210; --ink-soft:#3a3530; --muted:#76706a; --border:#ece5d5;
+  --serif:'Cormorant Garamond', Georgia, serif;
+  --sans:'DM Sans', system-ui, sans-serif;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; }
+h1, h2, h3 { font-family: var(--serif); color: var(--navy); letter-spacing: -0.01em; }
+a { color: var(--navy-mid); text-decoration: none; }
+a:hover { color: var(--gold); }
+
+.nav {
+  background: var(--navy); color: var(--paper);
+  padding: 1rem 2rem; box-shadow: 0 2px 12px rgba(15,33,55,0.15);
+}
+.nav-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.nav-logo { display: flex; align-items: center; gap: 0.75rem; color: var(--paper); }
+.nav-logo svg { width: 26px; height: 26px; }
+.nav-logo-text { font-family: var(--serif); font-size: 1.1rem; font-style: italic; font-weight: 600; }
+.nav-logo-text em { color: var(--goldb); font-style: normal; }
+.lang-btn {
+  background: transparent; border: 1px solid rgba(244,184,34,0.4);
+  color: var(--goldb); font-family: var(--sans); font-size: 0.65rem;
+  font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 0.4rem 0.9rem; border-radius: 3px; cursor: pointer;
+}
+
+.hero {
+  background: radial-gradient(ellipse at top, rgba(244,184,34,0.08) 0%, transparent 50%), linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  color: var(--paper); padding: 4rem 1.5rem 5rem; text-align: center;
+}
+.hero h1 { color: var(--paper); font-size: 2.75rem; font-style: italic; font-weight: 500; margin-bottom: 1rem; }
+.hero h1 em { color: var(--goldb); }
+.hero p { color: rgba(200,221,238,0.85); font-family: var(--serif); font-style: italic; font-size: 1.2rem; max-width: 580px; margin: 0 auto; }
+.eyebrow { color: var(--goldb); font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 600; margin-bottom: 1rem; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+
+.filtros {
+  display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem;
+  padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);
+}
+.filtro {
+  background: white; border: 1px solid var(--border);
+  padding: 0.5rem 1rem; border-radius: 20px;
+  font-size: 0.78rem; cursor: pointer; color: var(--muted);
+  font-weight: 600; transition: all 0.2s; text-transform: capitalize;
+}
+.filtro:hover { border-color: var(--gold); color: var(--gold); }
+.filtro.active { background: var(--navy); color: white; border-color: var(--navy); }
+
+.grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+.card {
+  background: white; padding: 1.75rem; border-radius: 6px;
+  border: 1px solid var(--border); transition: all 0.2s;
+  display: flex; flex-direction: column; position: relative;
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,33,55,0.08); border-color: var(--goldb); }
+.card .destacado {
+  position: absolute; top: 1rem; right: 1rem;
+  background: var(--goldb); color: var(--navy);
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 3px;
+}
+.card .tipo {
+  font-size: 0.7rem; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 0.12em;
+  font-weight: 700; margin-bottom: 0.6rem;
+}
+.card .titulo {
+  font-family: var(--serif); font-size: 1.35rem; font-weight: 600;
+  color: var(--navy); margin-bottom: 0.6rem; line-height: 1.25;
+}
+.card .descripcion {
+  font-size: 0.92rem; color: var(--ink-soft);
+  line-height: 1.55; flex: 1; margin-bottom: 1rem;
+}
+.card .footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 1rem; border-top: 1px solid var(--border);
+  font-size: 0.78rem; color: var(--muted);
+}
+.card .btn-abrir {
+  background: var(--navy); color: white;
+  padding: 0.5rem 1rem; border-radius: 4px;
+  font-size: 0.78rem; font-weight: 600;
+}
+.card .btn-abrir:hover { background: var(--gold); color: white; }
+
+.empty, .loading {
+  text-align: center; padding: 5rem 2rem;
+  color: var(--muted); font-style: italic;
+}
+
+footer { background: var(--navy); color: rgba(200,221,238,0.7); padding: 2rem; text-align: center; font-size: 0.85rem; }
+footer a { color: var(--goldb); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg viewBox="0 0 28 28" fill="none">
+        <rect x="0" y="0" width="12" height="12" rx="2.5" fill="#c8ddee"/>
+        <rect x="15" y="0" width="12" height="12" rx="2.5" fill="#c8ddee"/>
+        <rect x="0" y="15" width="12" height="12" rx="2.5" fill="#c8ddee"/>
+        <rect x="15" y="15" width="12" height="12" rx="2.5" fill="#f4b822"/>
+      </svg>
+      <span class="nav-logo-text">El <em>Cuarto</em> Impacto</span>
+    </a>
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="eyebrow" id="eyebrow">Biblioteca pública</div>
+  <h1 id="title">Recursos del <em>Cuarto Impacto</em></h1>
+  <p id="subtitle">Manifiesto, framework, guías, plantillas y casos: todo lo que necesitás para construir una empresa que use la tecnología con responsabilidad.</p>
+</section>
+
+<div class="container">
+  <div class="filtros" id="filtros"></div>
+  <div id="content"><div class="loading" id="loading-text">Cargando…</div></div>
+</div>
+
+<footer>
+  <p>El Cuarto Impacto · La responsabilidad digital como cuarta dimensión del valor empresarial</p>
+  <p style="margin-top:0.5rem"><a href="/">elcuartoimpacto.com</a> · <a href="mailto:info@elcuartoimpacto.com">info@elcuartoimpacto.com</a></p>
+</footer>
+
+<script>
+var currentLang = 'es';
+var urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('lang') === 'en') currentLang = 'en';
+
+var UI = {
+  es: {
+    eyebrow:'Biblioteca pública',
+    title:'Recursos del <em>Cuarto Impacto</em>',
+    subtitle:'Manifiesto, framework, guías, plantillas y casos: todo lo que necesitás para construir una empresa que use la tecnología con responsabilidad.',
+    loading:'Cargando…',
+    empty:'Pronto vamos a publicar los primeros recursos. Volvé en unos días.',
+    todos:'Todos',
+    abrir:'Abrir',
+  },
+  en: {
+    eyebrow:'Public library',
+    title:'Resources of <em>The Fourth Impact</em>',
+    subtitle:'Manifesto, framework, guides, templates and case studies: everything you need to build an organization that uses technology responsibly.',
+    loading:'Loading…',
+    empty:'We will publish the first resources soon. Check back in a few days.',
+    todos:'All',
+    abrir:'Open',
+  }
+};
+
+function toggleLang() {
+  currentLang = currentLang === 'es' ? 'en' : 'es';
+  apply();
+  var url = new URL(window.location);
+  url.searchParams.set('lang', currentLang);
+  history.replaceState({}, '', url);
+}
+
+function apply() {
+  var t = UI[currentLang];
+  document.documentElement.lang = currentLang;
+  document.getElementById('lang-btn').textContent = currentLang === 'es' ? 'EN' : 'ES';
+  document.getElementById('eyebrow').textContent = t.eyebrow;
+  document.getElementById('title').innerHTML = t.title;
+  document.getElementById('subtitle').textContent = t.subtitle;
+  render();
+}
+
+var BACKEND = (function(){
+  var h = window.location.hostname;
+  if (h === 'localhost' || h === '127.0.0.1') return 'http://localhost:3100';
+  return '';
+})();
+
+var TODOS = [];
+var FILTRO = 'todos';
+
+function render() {
+  var t = UI[currentLang];
+  var items = (FILTRO === 'todos') ? TODOS : TODOS.filter(r => r.categoria === FILTRO);
+
+  if (!items.length) {
+    document.getElementById('content').innerHTML = '<div class="empty">'+t.empty+'</div>';
+    return;
+  }
+
+  document.getElementById('content').innerHTML = '<div class="grid">'+items.map(r => `
+    <div class="card">
+      ${r.destacado ? '<span class="destacado">★ '+(currentLang === 'es' ? 'Destacado' : 'Featured')+'</span>' : ''}
+      <div class="tipo">${escapeHtml(r.tipo)} · ${escapeHtml(r.categoria)}</div>
+      <div class="titulo">${escapeHtml(r.titulo)}</div>
+      <div class="descripcion">${escapeHtml(r.descripcion || '')}</div>
+      <div class="footer">
+        <span>${r.idioma.toUpperCase()}</span>
+        <a href="${escapeHtml(r.url_descarga)}" target="_blank" rel="noopener" class="btn-abrir">${t.abrir} →</a>
+      </div>
+    </div>
+  `).join('')+'</div>';
+}
+
+function renderFiltros() {
+  var t = UI[currentLang];
+  var categorias = ['todos'].concat([...new Set(TODOS.map(r => r.categoria))]);
+  document.getElementById('filtros').innerHTML = categorias.map(c => `
+    <button class="filtro ${c === FILTRO ? 'active' : ''}" onclick="filtrar('${c}')">${c === 'todos' ? t.todos : c}</button>
+  `).join('');
+}
+
+window.filtrar = function(c) { FILTRO = c; renderFiltros(); render(); };
+
+function escapeHtml(s) {
+  if (!s) return '';
+  return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[c]);
+}
+
+fetch(BACKEND + '/api/recursos')
+  .then(r => r.json())
+  .then(out => {
+    TODOS = out.data || [];
+    renderFiltros();
+    render();
+  })
+  .catch(() => {
+    document.getElementById('content').innerHTML = '<div class="empty">No pudimos cargar los recursos.</div>';
+  });
+
+apply();
+</script>
+
+</body>
+</html>
